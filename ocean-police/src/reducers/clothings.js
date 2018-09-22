@@ -16,7 +16,7 @@ const seed = {
         percentage: 25,
       },
     ],
-    washingFrequency: 1,
+    washingPeriod: 1,
   },
   '002': {
     name: 'Jacket #1',
@@ -27,7 +27,7 @@ const seed = {
         percentage: 100,
       },
     ],
-    washingFrequency: 3,
+    washingPeriod: 3,
   },
 };
 
