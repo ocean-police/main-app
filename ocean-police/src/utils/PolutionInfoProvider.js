@@ -9,7 +9,15 @@ const numberOfParticlesPerWashByMaterialType = {
     "polyesters": 4202
 };
 
+const numberOfDaysInYear = 365
+
 class PolutionInfoProvider {
+    calculateTotalNumberOfParticlesPerLifeCircle(clothing, lifeCircleInDays = 2 * numberOfDaysInYear) {
+        const totalNumberOfParticlesPerWash = this.calculateTotalNumberOfParticlesPerWash(clothing)
+        const washingPeriod = clothing["washingPeriod"]
+        return lifeCircleInDays / washingPeriod * totalNumberOfParticlesPerWash
+    }
+
     calculateTotalNumberOfParticlesPerWash(clothing) {
         const clothingType = clothing["type"]
 
