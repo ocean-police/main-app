@@ -45,7 +45,11 @@ class PolutionInfoProvider {
         const materialWeightInGrams = clothingWeightInGrams * material["percentage"] / 100
         const numberOfParticlesPerGram = numberOfParticlesPerWashByMaterialType[materialType]
         return materialWeightInGrams * numberOfParticlesPerGram
-    } 
+    }
+
+    convertNumberOfParticlesToWeightInGrams(numberOfParticles) {
+        return numberOfParticles * 0.0000007
+    }
 }
 
 export default PolutionInfoProvider;
