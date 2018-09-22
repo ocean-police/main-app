@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Provider } from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
+import WelcomePage from './containers/WelcomePage';
 import AddClothingPage from './containers/AddClothingPage';
 import configureStore from './store/index';
 
@@ -22,7 +23,7 @@ export default class App extends Component{
           <BrowserRouter>
             <div id="application-container">
               <Switch>
-                <Route exact path="/" component={AddClothingPage} />
+                <Route exact path="/" component={WelcomePage} />
                 <Route exact path="/add" component={AddClothingPage} />
               </Switch>
             </div>
