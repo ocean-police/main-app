@@ -1,23 +1,26 @@
 import React from 'react';
-import { Chart, Axis, Series, Tooltip, Cursor, Line, Doughnut, Pie } from "react-charts";
+import { Chart, Axis, Series, Tooltip, Cursor, Pie } from "react-charts";
 
 export default function Result () {
 
-  var data = [
+  var dataSet = [
     {
       label: "Series 1",
       data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+    },
+    {
+      label: "Series 2",
+      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
     }
-  ]
+  ];
 
-
-  return <div className="">
+  return <div className="resultContainer">
     <h1>this is result page</h1>
 
     <div className="chartArea">
-      <Chart data={data}>
+      <Chart data={dataSet}>
         <Axis type="pie" />
-        <Series type={Pie} showPoints={false} />
+        <Series type={Pie} showPoints={true} />
         <Tooltip />
       </Chart>
     </div>
