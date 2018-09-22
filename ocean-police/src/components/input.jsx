@@ -1,17 +1,47 @@
-import React from 'react';
+import React, {Component} from 'react';
+// import Input from "./components/input";
+import Result from "./result";
 
-export default function Input () {
-  return <div>
+// export default function Input () {
+//   return <div>
+//
+//     Welcome to Ocean Police
+//
+//     Please select the clothing type.
+//     <li>Jeans</li>
+//     <li>Shirts</li>
+//     <li>Blouse</li>
+//
+//     <button>See Result</button>
+//
+//   </div>
+// }
 
-    Welcome to Ocean Police
+export default class Input extends Component{
 
-    Please select the clothing type.
-    <li>Jeans</li>
-    <li>Shirts</li>
-    <li>Blouse</li>
+  // goToInputPage() {
+  //   return <Input/>
+  // }
+  //
 
-    <button>See Result</button>
+  goToResultPage() {
+    window.location.href = 'result';
+    console.log("hit");
+  }
 
-  </div>
+  render() {
+    return <div>
+
+      Welcome to Ocean Police
+
+      Please select the clothing type.
+      <li>Jeans</li>
+      <li>Shirts</li>
+      <li>Blouse</li>
+
+      <button onClick={this.goToResultPage}>See Result</button>
+
+    </div>
+  }
 }
 
