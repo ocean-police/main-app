@@ -5,7 +5,7 @@ import './App.css';
 import Input from "./components/input";
 import Result from "./components/result";
 
-export default class App extends Component {
+export default class App extends Component{
 
   constructor(props){
     super(props);
