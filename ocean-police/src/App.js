@@ -1,36 +1,35 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import { Provider } from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.css';
-import Input from "./components/input";
-import Result from "./components/result";
+import WelcomePage from './containers/WelcomePage';
+import AddClothingPage from './containers/AddClothingPage';
+import configureStore from './store/index';
+
+const store = configureStore();
 
 export default class App extends Component{
 
-  constructor(props){
+  constructor(props) {
     super(props);
-  }
 
-  goToInputPage() {
-    return <Input/>
-  }
-
-  goToResultPage() {
-    return <Result/>;
+    this.state = {};
   }
 
   render() {
     return (
-      <div className="App">
-        <BrowserRouter>
-          <div id="application-container">
-            <Switch>
-              <Route exact path="/" component={this.goToInputPage}/>
-              <Route exact path="/result" component={this.goToResultPage}/>
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <BrowserRouter>
+            <div id="application-container">
+              <Switch>
+                <Route exact path="/" component={WelcomePage} />
+                <Route exact path="/add" component={AddClothingPage} />
+              </Switch>
+            </div>
+          </BrowserRouter>
+        </div>
+      </Provider>
     );
   }
 }
