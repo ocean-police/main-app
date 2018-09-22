@@ -1,32 +1,10 @@
 import React, {Component} from 'react';
-// import Input from "./components/input";
-import Result from "./result";
-
-// export default function Input () {
-//   return <div>
-//
-//     Welcome to Ocean Police
-//
-//     Please select the clothing type.
-//     <li>Jeans</li>
-//     <li>Shirts</li>
-//     <li>Blouse</li>
-//
-//     <button>See Result</button>
-//
-//   </div>
-// }
+import Button from '@material-ui/core/Button';
 
 export default class Input extends Component{
 
-  // goToInputPage() {
-  //   return <Input/>
-  // }
-  //
-
   goToResultPage() {
     window.location.href = 'result';
-    console.log("hit");
   }
 
   render() {
@@ -39,7 +17,7 @@ export default class Input extends Component{
       <li>Shirts</li>
       <li>Blouse</li>
 
-      <button onClick={this.goToResultPage}>See Result</button>
+      <Button variant="contained" color="primary" onClick={this.goToResultPage}>See Result</Button>
 
     </div>
   }
