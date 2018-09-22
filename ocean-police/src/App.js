@@ -9,8 +9,8 @@ export default class App extends Component {
 
   constructor(props){
     super(props);
-
   }
+
   goToInputPage() {
     return <Input/>
   }
@@ -29,9 +29,8 @@ export default class App extends Component {
               <Route exact path="/result" component={this.goToResultPage}/>
             </Switch>
           </div>
-        </BrowserRouter>;
+        </BrowserRouter>
       </div>
-
     );
   }
 }
