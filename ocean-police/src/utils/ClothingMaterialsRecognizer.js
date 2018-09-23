@@ -26,6 +26,8 @@ class ClothingMaterialsRecognizer {
                     }
                 }
             }
+        } else {
+            return false;
         }
     
         return true;
@@ -140,6 +142,8 @@ class ClothingMaterialsRecognizer {
                         console.log("Finished image recognition")
                         
                         const recognizedText = result["text"]
+                        console.log("Recognized text: " + recognizedText)
+
                         const materials = this.findMaterialsFromLabelText(recognizedText)
 
                         this.validateMaterialsTotalPercentage(materials);
