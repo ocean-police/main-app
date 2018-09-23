@@ -23,6 +23,26 @@ const numberOfParticlesPerWashByMaterialType = {
     "Viscose": 0
 };
 
+const colorsByMaterialType = {
+    "Polyester": "F8B195",
+    "Polyamide": "AE94C5",
+    "Nylon": "FFCB74",
+    "Acrylic": "BF6C84",
+    "Polypropylene": "6590B2",
+    "Elastane": "F2A45D",
+    "Spandex": "6B5C7B",
+    "Lycra": "DB97DB",
+    "Acetate": "BF5976",
+    "Cotton": "B8E986",
+    "Rayon": "86B358",
+    "Modal": "79C4E0",
+    "Lyocell": "2797DB",
+    "Linen": "50E3C2",
+    "Wool": "F2AD53",
+    "Cashmere": "3EB097",
+    "Viscose": "E7E37F"
+};
+
 const numberOfDaysInYear = 365
 
 class PolutionInfoProvider {
@@ -66,5 +86,5 @@ class PolutionInfoProvider {
     }
 }
 
-export { numberOfParticlesPerWashByMaterialType };
+export { colorsByMaterialType, numberOfParticlesPerWashByMaterialType };
 export default PolutionInfoProvider;
