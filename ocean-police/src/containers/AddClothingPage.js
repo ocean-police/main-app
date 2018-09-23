@@ -166,6 +166,8 @@ class AddClothingPage extends Component {
             />
           </Grid>
 
+          {this.renderGarmentList()}
+
 
           <Grid item xs={5}>
             <Button
