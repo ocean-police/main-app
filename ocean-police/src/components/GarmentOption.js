@@ -15,7 +15,7 @@ const styles = {
     backgroundColor: '#7A98E7',
   },
   icon: {
-    transform: 'translate(-25%,-50%)',
+    transform: 'translate(162%,-50%)',
     top: '50%',
     right: '50%',
     position: 'relative',
