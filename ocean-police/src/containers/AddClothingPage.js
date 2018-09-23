@@ -48,30 +48,15 @@ class AddClothingPage extends Component {
     super(props);
 
     this.state = {
-      updatedAttributes: [
+      name: '',
+      type: null,
+      materials: [
         {
-          name: 'The only T-shirt',
-          type: 'T_SHIRT',
-          materials: [
-            {
-              material: "",
-              percentage: 0,
-            },
-          ],
-          washingPeriod: 1,
+          material: "",
+          percentage: 0,
         },
-        {
-          name: 'The only T-shirt 2',
-          type: 'T_SHIRT',
-          materials: [
-            {
-              material: "Plastic Cloth",
-              percentage: 20,
-            }
-          ],
-          washingPeriod: 1,
-        },
-      ]
+      ],
+      washingPeriod: 1,
     };
   }
 
@@ -79,42 +64,39 @@ class AddClothingPage extends Component {
     window.location.href = 'result';
   }
 
-  addMaterial(clothingIndex) {
-    var newState = this.state.updatedAttributes;
-    newState[clothingIndex]["materials"].push(
+  addMaterial() {
+    var newMaterials = [...this.state.materials];
+    newMaterials.push(
       {
         material: "",
         percentage: 0,
       },
     )
     this.setState({
-      updatedAttributes: newState
+      materials: newMaterials,
     });
   }
 
-  removeMaterial(clothingIndex, materialsIndex) {
-    var newState = this.state.updatedAttributes
-    _(newState[clothingIndex]["materials"])
-      .splice(materialsIndex, 1)
-      .value();
+  removeMaterial(materialsIndex) {
+    var newMaterials = [...this.state.materials];
+    newMaterials.splice(materialsIndex, 1);
     this.setState({
-      updatedAttributes: newState
+      materials: newMaterials,
     });
   }
 
-  updateClothingMaterialField(clothingIndex, materialsIndex, stateValueToUpdate, value) {
-    console.log("typing", clothingIndex, materialsIndex, value);
-    var newState = this.state.updatedAttributes;
-    newState[clothingIndex]["materials"][materialsIndex][stateValueToUpdate] = value;
+  updateClothingMaterialField(materialsIndex, stateValueToUpdate, value) {
+    var newMaterials = this.state.materials;
+    newMaterials[materialsIndex][stateValueToUpdate] = value;
     this.setState({
-      updatedAttriutes: newState
-    })
+      materials: newMaterials,
+    });
   }
 
   renderGarmentList() {
-    return this.state.updatedAttributes.map((item, clothingIndex) => {
-      return <div key={`clothing-index=${clothingIndex}`} className={`clothing-index-${clothingIndex}`}>
-        {item["materials"].map((materialItem, materialsIndex) => {
+    return (
+      <div key={`clothing-index=0`} className={`clothing-index-0`}>
+        {this.state.materials.map((materialItem, materialsIndex) => {
           return <div key={`materials-index=${materialsIndex}`}
                       className={`materials-index-${materialsIndex}`}>
             <List component="nav">
@@ -124,20 +106,20 @@ class AddClothingPage extends Component {
                   placeholder="Material"
                   className="listitem-input-left"
                   value={materialItem["material"]}
-                  onChange={(e) => this.updateClothingMaterialField(clothingIndex, materialsIndex, "material", e.target.value)}
+                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "material", e.target.value)}
                 />
                 <Input
                   id="adornment-percentage"
                   placeholder="Percentage"
                   className="listitem-input-middle"
                   value={materialItem["percentage"]}
-                  onChange={(e) => this.updateClothingMaterialField(clothingIndex, materialsIndex, "percentage", e.target.value)}
+                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "percentage", e.target.value)}
                   endAdornment={<InputAdornment position="end">%</InputAdornment>}
                 >
                 </Input>
                 <div
                   className="listitem-input-right"
-                  onClick={() => this.removeMaterial(clothingIndex, materialsIndex)}
+                  onClick={() => this.removeMaterial(materialsIndex)}
                 >
                   <i className="fas fa-times"></i>
                 </div>
@@ -146,7 +128,7 @@ class AddClothingPage extends Component {
           </div>
         })}
         <div className="add-material-button-container"
-             onClick={() => this.addMaterial(clothingIndex)}>
+             onClick={() => this.addMaterial()}>
           <div item xs={5} className="add-material-button-left">
             Add a material
           </div>
@@ -155,7 +137,7 @@ class AddClothingPage extends Component {
           </div>
         </div>
       </div>
-    })
+    );
   }
 
   render() {
@@ -224,12 +206,17 @@ class AddClothingPage extends Component {
             <Typography variant="display1">
               Name Your Garment
             </Typography>
+            <Typography variant="caption">
+              To help you find your favourite garment in your Closet
+            </Typography>
           </Grid>
 
           <Grid item xs={12} className={classes.searchSection}>
             <Input
               id="input-without-icon-adornment"
               fullWidth
+              onClick={(e) => this.setState({name: e.currentTarget.value})}
+              value={this.state.name}
               placeholder="Short Sleeve 1"
               startAdornment={
                 <InputAdornment position="start">
@@ -288,20 +275,6 @@ class AddClothingPage extends Component {
             </Select>
           </Grid>
           
-          <Grid item xs={1} />
-
-          <Grid item xs={1}/>
-          <Grid item xs={1}/>
-
-
-          <Grid item xs={12} className="direction-type-1 full-width">
-            <Typography variant="caption">
-              To help you find your favourite garment in your Closet
-            </Typography>
-          </Grid>
-          <div>
-            {this.renderGarmentList()}
-          </div>
 
           <Grid item xs={5}>
             <Button
