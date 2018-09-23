@@ -6,6 +6,7 @@ import Jacket from '../src/styles/icons/jacket.png';
 import Dress from '../src/styles/icons/dress.png';
 import Underwear from '../src/styles/icons/underwear.png';
 import Socks from '../src/styles/icons/socks.png';
+import Camera from '../src/styles/icons/camera.png';
 
 const icons = {
 	ShortSleeve,
@@ -16,6 +17,7 @@ const icons = {
     Dress,
     Underwear,
     Socks,
+    Camera,
 };
 
 export {icons};

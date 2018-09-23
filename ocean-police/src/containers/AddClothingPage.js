@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
+import ActionButton from '../components/ActionButton';
 import {Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem} from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
@@ -240,11 +241,11 @@ class AddClothingPage extends Component {
 
           <Grid item xs={4} />
           <Grid item xs={8}>
-            <GarmentOption />
+            <ActionButton type="Camera"/>
           </Grid>
 
           <Grid item xs={12} className={classes.smallCaption}>
-            <Typography variant="caption">Or input the materials manually</Typography>
+            <Typography variant="caption" align="left">Or input the materials manually</Typography>
           </Grid>
           
           <Grid item xs={12}>
