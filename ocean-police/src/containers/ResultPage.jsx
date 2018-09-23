@@ -54,7 +54,8 @@ class Result extends React.Component {
     const gramsPerLifeCircle = provider.convertNumberOfParticlesToWeightInGrams(particlesPerLifeCircle)
 
     const numberOfPlasticBags = provider.calculateNumberOfPlasticBags(gramsPerLifeCircle)
-
+    const washingPeriodInWeeks = Math.trunc(clothing["washingPeriod"] / 7)
+    
     this.state = {
       chartColorSequence: [
         "rgb(74, 181, 235)",
@@ -92,6 +93,7 @@ class Result extends React.Component {
       gramsPerLifeCircle: gramsPerLifeCircle,
       numberOfPlasticBags: numberOfPlasticBags,
       clothing: clothing,
+      washingPeriodInWeeks: washingPeriodInWeeks
     };
   }
 
@@ -178,7 +180,7 @@ class Result extends React.Component {
         </div>
         <div className="micro-plastics-cover">
           <div className="legend-description">
-            Washed Every 2 Weeks
+            Washed Every {this.state.washingPeriodInWeeks} Weeks
           </div>
           <div className="micro-plastics-cover-left">
             <div className="legend-description">

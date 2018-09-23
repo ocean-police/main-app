@@ -318,14 +318,14 @@ class AddClothingPage extends Component {
                 fullWidth
                 className={classes.washingPeriodSelect}
               >
-                <MenuItem value="1">
+                <MenuItem value="7">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value="1">Every 1 Week</MenuItem>
-                <MenuItem value="2">Every 2 Weeks</MenuItem>
-                <MenuItem value="3">Every 3 Weeks</MenuItem>
-                <MenuItem value="4">A Month</MenuItem>
-                <MenuItem value="5">Custom</MenuItem>
+                <MenuItem value="7">Every 1 Week</MenuItem>
+                <MenuItem value="14">Every 2 Weeks</MenuItem>
+                <MenuItem value="21">Every 3 Weeks</MenuItem>
+                <MenuItem value="30">A Month</MenuItem>
+                <MenuItem value="30">Custom</MenuItem>
               </Select>
             </Grid>
             
