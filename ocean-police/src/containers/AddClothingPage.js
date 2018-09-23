@@ -6,6 +6,7 @@ import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import * as _ from "lodash";
 import ListItemText from '@material-ui/core/ListItemText';
 
 // import { diff } from 'deep-object-diff';
@@ -24,8 +25,8 @@ const styles = {
   },
   buttonWidth: {
     width: "95%",
-    margin: "0 2.5%",
-    backgroundColor: "#7A98E7"
+    margin: "0 20%",
+    backgroundColor: "#7A98E7",
   },
   washingPeriodSelect: {
     marginBottom: '20px',
@@ -55,7 +56,11 @@ class AddClothingPage extends Component {
             {
               material: "Plastic Cloth",
               percentage: 20,
-            }
+            },
+            {
+              material: "Synthetic Polyester",
+              percentage: 80,
+            },
           ],
           washingPeriod: 1,
         },
@@ -67,35 +72,71 @@ class AddClothingPage extends Component {
     window.location.href = 'result';
   }
 
-  renderGarmentList() {
-    return this.state.updatedAttributes.map((item) => {
-       return <div>
-        {/*{item.name}*/}
-         {item["materials"].map((materialItem) => {
-           return <div>
-             <List component="nav" >
-               <ListItem>
-                     <Input
-                       id="input-standard"
-                       placeholder="Material"
-                       className="listitem-input-left"
-                       defaultValue={materialItem["material"]}
-                     />
-                     <Input
-                       id="input-standard"
-                       placeholder="Percentage"
-                       className="listitem-input-middle"
-                       defaultValue={materialItem["percentage"]}
-                     >
-                     </Input>
-                      <div className="listitem-input-right">
-                        <i className="fas fa-times"></i>
-                      </div>
+  addMaterial(clothingIndex) {
+    var newState = this.state.updatedAttributes;
+    newState[clothingIndex]["materials"].push(
+      {
+        material: "",
+        percentage: 0,
+      },
+    )
+    this.setState({
+      updatedAttributes: newState
+    });
+  }
 
+  removeMaterial(clothingIndex, materialsIndex) {
+    var newState = this.state.updatedAttributes
+    _(newState[clothingIndex]["materials"])
+      .splice(materialsIndex, 1)
+      .value();
+    this.setState({
+      updatedAttributes: newState
+    });
+  }
+
+  renderGarmentList() {
+    return this.state.updatedAttributes.map((item, clothingIndex) => {
+       return <div key={`clothing-index=${clothingIndex}`} className={`clothing-index-${clothingIndex}`}>
+        {/*{item.name}*/}
+         {item["materials"].map((materialItem, materialsIndex) => {
+           return <div key={`materials-index=${materialsIndex}`}
+             className={`materials-index-${materialsIndex}`}>
+             <List component="nav">
+               <ListItem>
+                 <Input
+                   id="input-standard"
+                   placeholder="Material"
+                   className="listitem-input-left"
+                   defaultValue={materialItem["material"]}
+                 />
+                 <Input
+                   id="adornment-percentage"
+                   placeholder="Percentage"
+                   className="listitem-input-middle"
+                   defaultValue={materialItem["percentage"]}
+                   endAdornment={<InputAdornment position="end">%</InputAdornment>}
+                 >
+                 </Input>
+                 <div
+                   className="listitem-input-right"
+                   onClick={() => this.removeMaterial(clothingIndex, materialsIndex)}
+                 >
+                   <i className="fas fa-times"></i>
+                 </div>
                </ListItem>
              </List>
            </div>
          })}
+         <div className="add-material-button-container"
+           onClick={() => this.addMaterial(clothingIndex)}>
+           <div item xs={5} className="add-material-button-left">
+             Add a material
+           </div>
+           <div item xs={3} className="add-material-button-right">
+             <i className="fas fa-plus"></i>
+           </div>
+         </div>
       </div>
     })
   }
@@ -229,11 +270,9 @@ class AddClothingPage extends Component {
             To help you find your favourite garment in your Closet
           </Typography>
         </Grid>
-
-
-
-          {this.renderGarmentList()}
-
+          <div>
+            {this.renderGarmentList()}
+          </div>
 
           <Grid item xs={5}>
             <Button
@@ -252,9 +291,9 @@ class AddClothingPage extends Component {
               Add Another
             </Button>
           </Grid>
-          <Grid item xs={3} />
-        </Grid>
+          <Grid item xs={3}/>
 
+        </Grid>
       </div>
     );
   }
