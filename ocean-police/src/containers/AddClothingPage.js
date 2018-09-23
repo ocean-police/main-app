@@ -117,6 +117,7 @@ class AddClothingPage extends Component {
                   placeholder="Percentage"
                   className="listitem-input-middle"
                   value={materialItem["percentage"]}
+                  endAdornment={<InputAdornment position="end">%</InputAdornment>}
                   onChange={(e) => this.updateClothingMaterialField(materialsIndex, "percentage", e.target.value)}
                 >
                 </Input>

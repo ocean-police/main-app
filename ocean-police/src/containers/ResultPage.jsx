@@ -42,7 +42,7 @@ export default class Result extends React.Component {
     const particlesPerLifeCircle = provider.calculateTotalNumberOfParticlesPerLifeCircle(clothing)
     const gramsPerLifeCircle = provider.convertNumberOfParticlesToWeightInGrams(particlesPerLifeCircle)
 
-    console.log("Life cycle: " + particlesPerLifeCircle)
+    const numberOfPlasticBags = provider.calculateNumberOfPlasticBags(gramsPerLifeCircle)
 
     this.state = {
       chartColorSequence: [
@@ -79,6 +79,7 @@ export default class Result extends React.Component {
       ],
       gramsPerWash: gramsPerWash,
       gramsPerLifeCircle: gramsPerLifeCircle,
+      numberOfPlasticBags: numberOfPlasticBags
     };
   }
 
@@ -104,6 +105,9 @@ export default class Result extends React.Component {
     return today
   }
 
+  formatWeightInGrams(grams) {
+    return Math.trunc(grams*100)/100
+  }
 
   render() {
     //you can declare var here
@@ -160,7 +164,7 @@ export default class Result extends React.Component {
             <div className="legend-description">
               Microplastics/Wash
               <div className="micro-plastics-figure">
-                {Math.trunc(this.state.gramsPerWash*100)/100}
+                {this.formatWeightInGrams(this.state.gramsPerWash)}
                 <span className="micro-plastics-unit">g</span>
               </div>
             </div>
@@ -169,7 +173,7 @@ export default class Result extends React.Component {
             <div className="legend-description">
               Microplastics/Year
               <div className="micro-plastics-figure yearly-figure">
-                {Math.trunc(this.state.gramsPerLifeCircle*100)/100}
+                {this.formatWeightInGrams(this.state.gramsPerLifeCircle)}
                 <span className="micro-plastics-unit">g</span>
               </div>
             </div>
@@ -182,7 +186,7 @@ export default class Result extends React.Component {
               <img className="plastic-release-logo" src={plasticBagIcon}/>
             </div>
             <div className="plastic-release-left">
-              <div className="plastic-release-pollution-amount">1/2</div>
+              <div className="plastic-release-pollution-amount">{this.formatWeightInGrams(this.state.numberOfPlasticBags)}</div>
               <div>Plastic Bag</div>
             </div>
           </div>

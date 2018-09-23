@@ -102,6 +102,10 @@ class PolutionInfoProvider {
     convertNumberOfParticlesToWeightInGrams(numberOfParticles) {
         return numberOfParticles * 0.0000007
     }
+
+    calculateNumberOfPlasticBags(particlesInGrams, plasticBagWeightInGrams = 5) {
+        return (particlesInGrams / plasticBagWeightInGrams)
+    }
 }
 
 export { colorsByMaterialType, clothingWeightByType, numberOfParticlesPerWashByMaterialType, PolutionInfoProvider };
