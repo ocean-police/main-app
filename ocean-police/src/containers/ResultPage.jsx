@@ -4,11 +4,46 @@ import badSmileyIcon from "../resources/smileyIcon.JPG"
 import plasticBagIcon from "../resources/plasticBag.JPG"
 import ocean from "../resources/ocean.JPG"
 import pantsIcon from "../resources/pants.JPG"
+import { numberOfParticlesPerWashByMaterialType, clothingWeightByType, PolutionInfoProvider } from "../utils/PolutionInfoProvider"
 
 export default class Result extends React.Component {
 
   constructor(props) {
     super(props);
+
+    const clothing = {
+        "type": Object.keys(clothingWeightByType)[0],
+        "washingPeriod": 3,
+        "name": "test",
+        "materials": [
+          {
+            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[0],
+            "percentage": 20
+          },
+          {
+            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[1],
+            "percentage": 55
+          },
+          {
+            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[2],
+            "percentage": 25
+          }
+        ]
+    }
+
+    const materials = clothing["materials"].map(material => {
+      return [material["type"], material["percentage"]]
+    })
+
+    const provider = new PolutionInfoProvider()
+    const particlesPerWash = provider.calculateTotalNumberOfParticlesPerWash(clothing)
+    const gramsPerWash = provider.convertNumberOfParticlesToWeightInGrams(particlesPerWash)
+
+    const particlesPerLifeCircle = provider.calculateTotalNumberOfParticlesPerLifeCircle(clothing)
+    const gramsPerLifeCircle = provider.convertNumberOfParticlesToWeightInGrams(particlesPerLifeCircle)
+
+    console.log("Life cycle: " + particlesPerLifeCircle)
+
     this.state = {
       chartColorSequence: [
         "rgb(74, 181, 235)",
@@ -38,14 +73,12 @@ export default class Result extends React.Component {
         },
         {
           label: "Fabric Composition2",
-            data: [
-            ["Cashmere", 0.8],
-            ["Cotton", 0.1],
-            ["Synthetic Fiber", 0.05],
-            ["Others", 0.05],
-          ],
+            data: materials,
         },
-      ]
+        
+      ],
+      gramsPerWash: gramsPerWash,
+      gramsPerLifeCircle: gramsPerLifeCircle,
     };
   }
 
@@ -53,7 +86,7 @@ export default class Result extends React.Component {
     return this.state.dataset[1]["data"].map((item, index) => {
       return <div className="legend-bar-section" key={`color-legend-key-${index}`}>
         <div className="legend-bar" style={{backgroundColor: this.state["chartColorSequence"][index]}}></div>
-        <div className="legend-bar-percentage">{item[1]*100}%</div>
+        <div className="legend-bar-percentage">{Math.trunc(item[1])}%</div>
         <div className="legend-bar-description">{item[0]}</div>
       </div>
     })
@@ -127,7 +160,7 @@ export default class Result extends React.Component {
             <div className="legend-description">
               Microplastics/Wash
               <div className="micro-plastics-figure">
-                .09
+                {Math.trunc(this.state.gramsPerWash*100)/100}
                 <span className="micro-plastics-unit">g</span>
               </div>
             </div>
@@ -136,7 +169,7 @@ export default class Result extends React.Component {
             <div className="legend-description">
               Microplastics/Year
               <div className="micro-plastics-figure yearly-figure">
-                2.02
+                {Math.trunc(this.state.gramsPerLifeCircle*100)/100}
                 <span className="micro-plastics-unit">g</span>
               </div>
             </div>
