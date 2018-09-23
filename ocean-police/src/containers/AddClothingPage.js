@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
 import { Button, Typography, TextField, withStyles, Grid, InputAdornment, FormControl, InputLabel, Input } from '@material-ui/core';
-import { Search } from '@material-ui/icons';
+import Search from '@material-ui/icons/Search';
 
 // import { diff } from 'deep-object-diff';
 
@@ -78,24 +78,7 @@ class AddClothingPage extends Component {
               }
             />
           </Grid>
-          <Grid item xs={1} />
-          <Grid item xs={5}>
-            <Button
-              variant="contained"
-              className={classes.buttonWidth}
-              color="primary" onClick={this.goToResultPage}>
-              Save
-            </Button>
-          </Grid>
-          <Grid item xs={5}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.buttonWidth}>
-              Add Another
-            </Button>
-          </Grid>
-          <Grid item xs={3} />
+
           <Grid container>
             <Grid item xs={3}>
               <GarmentOption />
@@ -122,10 +105,26 @@ class AddClothingPage extends Component {
               <GarmentOption />
             </Grid>
           </Grid>
+
+          <Grid item xs={1} />
+          <Grid item xs={5}>
+            <Button
+              variant="contained"
+              className={classes.buttonWidth}
+              color="primary" onClick={this.goToResultPage}>
+              Save
+            </Button>
+          </Grid>
+          <Grid item xs={5}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.buttonWidth}>
+              Add Another
+            </Button>
+          </Grid>
+          <Grid item xs={3} />
         </Grid>
-        <div>
-          <Button variant="contained" color="primary" onClick={this.goToResultPage}>See Result</Button>
-        </div>
       </div>
     );
   }

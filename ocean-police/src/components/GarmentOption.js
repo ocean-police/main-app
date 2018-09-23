@@ -23,6 +23,7 @@ const styles = {
   caption: {
     marginTop: '10px',
     width: '80px',
+    marginBottom: '20px',
   },
 };
 
