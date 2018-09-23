@@ -94,7 +94,15 @@ class AddClothingPage extends Component {
             </Grid>
           </Grid>
 
-        <Grid item xs={1} />
+        <Grid item xs={4} />
+
+        <Grid item xs={5}>
+          <Button variant="contained" size="small" color="primary" className={classes.button}>
+          See More
+          </Button>
+        </Grid>
+
+        <Grid item xs={4} />
 
         <Grid item xs={12}>
           <Typography variant="display1">
@@ -109,12 +117,12 @@ class AddClothingPage extends Component {
 
         <Grid item xs={12} className={classes.searchSection}>
             <Input
-              id="input-with-icon-adornment"
+              id="input-without-icon-adornment"
               fullWidth
               placeholder="Short Sleeve 1"
               startAdornment={
                 <InputAdornment position="start">
-                  <Search />
+                  
                 </InputAdornment>
               }
             />
