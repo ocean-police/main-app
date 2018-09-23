@@ -104,5 +104,4 @@ class PolutionInfoProvider {
     }
 }
 
-export { colorsByMaterialType, numberOfParticlesPerWashByMaterialType };
-export default PolutionInfoProvider;
+export { colorsByMaterialType, clothingWeightByType, numberOfParticlesPerWashByMaterialType, PolutionInfoProvider };
