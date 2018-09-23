@@ -31,6 +31,13 @@ const styles = {
   },
   listItemInputWidth: {
     marginRight: "10px"
+  },
+  button: {
+    color: "grey",
+    border: "1px solid grey",
+    ":hover": {
+      border: "1px solid grey"
+    } 
   }
 };
 
@@ -156,6 +163,32 @@ class AddClothingPage extends Component {
             </Grid>
           </Grid>
 
+
+        <Grid item xs={4} />
+
+        <Grid item xs={5}>
+          <Button variant="outlined" size="small" color="default" className={classes.button}>
+          See More
+          </Button>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Typography variant="display1">
+            Name Your Garment
+          </Typography>
+          <Typography variant="caption">
+            To help you find your favourite garment in your Closet
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12} className={classes.searchSection}>
+          <Input
+            id="input-without-icon-adornment"
+            fullWidth
+            placeholder="Short Sleeve 1"
+          />
+        </Grid>
+
           <Grid item xs={12}>
             <Typography variant="display1">
               Material Composition
@@ -165,13 +198,13 @@ class AddClothingPage extends Component {
             </Typography>
           </Grid>
 
-          <Grid item xs={5} />
-          <Grid item xs={7}>
-            <GarmentOption/>
+          <Grid item xs={4} />
+          <Grid item xs={8}>
+            <GarmentOption />
           </Grid>
 
           <Grid item xs={12} className={classes.smallCaption}>
-            <Typography variant="caption">Or input your computer</Typography>
+            <Typography variant="caption">Or input the materials manually</Typography>
           </Grid>
           
           <Grid item xs={12}>
@@ -203,30 +236,6 @@ class AddClothingPage extends Component {
               <MenuItem value="a month">A Month</MenuItem>
               <MenuItem value="customs">Custom</MenuItem>
             </Select>
-          </Grid>
-
-        <Grid item xs={12}>
-          <Typography variant="display1">
-            Name Your Garment
-          </Typography>
-        </Grid>
-        <Grid item xs={12} className="direction-type-1 full-width">
-          <Typography variant="caption">
-            To help you find your favourite garment in your Closet
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} className={classes.searchSection}>
-            <Input
-              id="input-with-icon-adornment"
-              fullWidth
-              placeholder="Short Sleeve 1"
-              startAdornment={
-                <InputAdornment position="start">
-                  <Search />
-                </InputAdornment>
-              }
-            />
           </Grid>
           
           <Grid item xs={1} />
