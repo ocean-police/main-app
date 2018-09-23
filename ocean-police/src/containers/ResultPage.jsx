@@ -5,13 +5,9 @@ export default function Result () {
 
   var dataSet = [
     {
-      label: "Series 1",
-      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+      label: "Fabric Composition",
+      data: [["Silk", 0.1], ["Cashmere", 0.1], ["Polyestere", 0.1], ["Nylon", 0.1], ["Cotton", 0.6]]
     },
-    {
-      label: "Series 2",
-      data: [[0, 3], [1, 1], [2, 5], [3, 6], [4, 4]]
-    }
   ];
 
   return <div className="resultContainer">
@@ -21,7 +17,7 @@ export default function Result () {
       <Chart data={dataSet}>
         <Axis type="pie" />
         <Series type={Pie} showPoints={true} />
-        <Tooltip />
+        {/*<Tooltip />*/}
       </Chart>
     </div>
 

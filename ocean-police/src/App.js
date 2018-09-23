@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Provider } from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './styles/App.css';
-import './styles/input.css';
+import './styles/AddClothingPage.css';
 import './styles/result.css';
 import WelcomePage from './containers/WelcomePage';
 import AddClothingPage from './containers/AddClothingPage';
