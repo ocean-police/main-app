@@ -90,7 +90,8 @@ class Result extends React.Component {
       ],
       gramsPerWash: gramsPerWash,
       gramsPerLifeCircle: gramsPerLifeCircle,
-      numberOfPlasticBags: numberOfPlasticBags
+      numberOfPlasticBags: numberOfPlasticBags,
+      clothing: clothing,
     };
   }
 
@@ -123,7 +124,7 @@ class Result extends React.Component {
   render() {
     //you can declare var here
     return <div className="resultContainer">
-        <AppBar position="static" style={{backgroundColor: '#7A98E7'}}>
+        <AppBar position="fixed" style={{backgroundColor: '#7A98E7'}}>
           <Toolbar>
             <IconButton color="inherit" aria-label="Menu" onClick={() => this.props.history.goBack()}>
               <ArrowBack />
@@ -146,7 +147,7 @@ class Result extends React.Component {
           Let's analyze what's in your cloth.
         </div>
         <div className="garment-cover">
-          <GarmentOption className="garment-icon" type="Pants" name="Pants" active/>
+          <GarmentOption className="garment-icon" type={this.state.clothing.type} name={this.state.clothing.type} active/>
         </div>
       </div>
 

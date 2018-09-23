@@ -62,6 +62,7 @@
     float: left;
     width: 40px;
     margin-left: 10px;
+    padding-right: 5px;
 }
 
 .chart-icon {
@@ -166,7 +167,7 @@ chart-details-container {
 }
 
 .closet-area-container {
-    margin-top: 20px;
+    margin-top: 80px;
     margin-bottom: 20px;
 }
 

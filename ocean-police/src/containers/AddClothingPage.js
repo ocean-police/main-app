@@ -188,7 +188,7 @@ class AddClothingPage extends Component {
     const {classes} = this.props;
     return (
       <React.Fragment>
-        <AppBar position="static" color="default">
+        <AppBar position="fixed" color="default">
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <ArrowBack />

@@ -57,7 +57,7 @@ class ClosetPage extends Component {
     const {classes} = this.props;
     return (
       <React.Fragment>
-        <AppBar position="static" className={classes.appbar}>
+        <AppBar position="fixed" className={classes.appbar}>
           <Toolbar>
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <Hello />
