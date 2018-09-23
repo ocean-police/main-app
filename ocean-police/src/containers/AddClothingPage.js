@@ -10,7 +10,8 @@ import ListItem from '@material-ui/core/ListItem';
 
 import * as _ from "lodash";
 import ListItemText from '@material-ui/core/ListItemText';
-import {icons} from '../GarmentIcons';
+import { icons } from '../GarmentIcons';
+import ClothingMaterialsRecognizer from '../utils/ClothingMaterialsRecognizer';
 // import { diff } from 'deep-object-diff';
 
 import { withRouter } from 'react-router-dom';
@@ -145,6 +146,26 @@ class AddClothingPage extends Component {
     );
   }
 
+  onImageSelected(e) {
+    if (e.target.files.length < 1) {
+      console.log("Items not selected")
+    } else {
+      const imageFile = e.target.files[0];
+      console.log(imageFile)
+      const recognizer = new ClothingMaterialsRecognizer();
+      recognizer.recognize(imageFile).then(materials => {
+        console.log("Materials: ")
+        console.log(materials)
+  
+        this.setState({
+          materials: materials,
+        });
+      }).catch(error => {
+        console.error("Error: " + error)
+      })
+    }
+  }
+
   render() {
     const {classes} = this.props;
     return (
@@ -237,7 +258,10 @@ class AddClothingPage extends Component {
 
           <Grid item xs={4} />
           <Grid item xs={8}>
-            <ActionButton type="Camera"/>
+            <label htmlFor='myInput'>
+              <input id="myInput" style={{visibility: 'hidden'}} type="file" accept="image/*" onChange={e => this.onImageSelected(e) }/>
+              <ActionButton type="Camera"/>
+            </label>
           </Grid>
 
           <Grid item xs={12} className={classes.smallCaption}>
