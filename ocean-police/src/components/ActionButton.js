@@ -9,17 +9,12 @@ const styles = {
     width: '80px',
     backgroundColor: 'white',
     border: "1px solid #E2E2E2",
-    
     borderRadius: '100px',
   },
-  iconActiveColor: {
-    backgroundColor: '#7A98E7',
-    //box-shadow: "0 1px 7px 0 rgba(0,0,0,0.12)",
-  },
   icon: {
-    transform: 'translate(162%,-50%)',
-    top: '50%',
-    left: '-277%',
+    //transform: 'translate(162%,-50%)',
+    top: '27%',
+    left: '27%',
     position: 'relative',
     fill: 'white',
   },
@@ -45,8 +40,7 @@ class AddClothingPage extends Component {
         <div className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
         <img className={classes.icon} src={ icons[this.props.type]}  />
         </div>
-        <Typography variant="caption" align="center" className={classes.caption}> {this.props.name} </Typography>
-      </React.Fragment>
+        </React.Fragment>
     );
   }
 }
