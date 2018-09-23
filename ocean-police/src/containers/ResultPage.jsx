@@ -1,9 +1,12 @@
 import React from 'react';
 import {Chart, Axis, Series, Tooltip, Cursor, Pie} from "react-charts";
-import badSmileyIcon from "../resources/smileyIcon.JPG"
-import plasticBagIcon from "../resources/plasticBag.JPG"
-import ocean from "../resources/ocean.JPG"
-import pantsIcon from "../resources/pants.JPG"
+import badSmileyIcon from "../resources/smileyIcon.JPG";
+import plasticBagIcon from "../resources/plasticBag.JPG";
+import goodIcon from "../resources/good.png";
+import badIcon from "../resources/bad.png";
+import mehIcon from "../resources/meh.png";
+import ocean from "../resources/ocean.JPG";
+import pantsIcon from "../resources/pants.JPG";
 import { numberOfParticlesPerWashByMaterialType, clothingWeightByType, PolutionInfoProvider } from "../utils/PolutionInfoProvider"
 
 export default class Result extends React.Component {
@@ -143,7 +146,7 @@ export default class Result extends React.Component {
             <Axis type="pie"/>
             <Series type={Pie} showPoints={true}/>
           </Chart>
-          <img className="chart-icon" src={badSmileyIcon} />
+          <img className="chart-icon" src={badIcon} />
         </div>
         <div className="chart-area-right">
           {this.renderColorLegend()}
