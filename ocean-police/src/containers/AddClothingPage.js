@@ -20,6 +20,7 @@ const styles = {
   searchSection: {
     fontSize: "40px",
     margin: "3px 0px",
+    border: "1px solid rgba(0,0,0,0.12)"
   },
   buttonWidth: {
     width: "95%",
@@ -167,7 +168,7 @@ class AddClothingPage extends Component {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} className={classes.searchSection}>
+        <Grid item xs={12} className={classes.searchSection} >
           <Input
             id="input-without-icon-adornment"
             fullWidth
