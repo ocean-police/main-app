@@ -51,6 +51,17 @@ class AddClothingPage extends Component {
           ],
           washingPeriod: 1,
         },
+        {
+          name: 'The only T-shirt 2',
+          type: 'T_SHIRT',
+          materials: [
+            {
+              material: "Plastic Cloth",
+              percentage: 20,
+            }
+          ],
+          washingPeriod: 1,
+        },
       ]
     };
   }
@@ -61,10 +72,10 @@ class AddClothingPage extends Component {
 
   renderGarmentList() {
     return this.state.updatedAttributes.map((item) => {
-       return <div>
+       return <div key={item.name}>
         {/*{item.name}*/}
          {item["materials"].map((materialItem) => {
-           return <div>
+           return <div key={materialItem.material}>
              <List component="nav" >
                <ListItem>
                      <Input
@@ -162,6 +173,10 @@ class AddClothingPage extends Component {
           <Grid item xs={12} className={classes.smallCaption}>
             <Typography variant="caption">Or input your computer</Typography>
           </Grid>
+          
+          <Grid item xs={12}>
+            {this.renderGarmentList()}
+          </Grid>
 
           <Grid item xs={12}>
             <Typography variant="display1">
@@ -190,9 +205,6 @@ class AddClothingPage extends Component {
             </Select>
           </Grid>
 
-          <Grid item xs={1} />
-        <Grid item xs={1} />
-
         <Grid item xs={12}>
           <Typography variant="display1">
             Name Your Garment
@@ -216,10 +228,8 @@ class AddClothingPage extends Component {
               }
             />
           </Grid>
-
-          {this.renderGarmentList()}
-
-
+          
+          <Grid item xs={1} />
           <Grid item xs={5}>
             <Button
               variant="contained"
