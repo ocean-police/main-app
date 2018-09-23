@@ -62,7 +62,8 @@ class AddClothingPage extends Component {
         },
       ],
       washingPeriod: 1,
-      isRunningImageRecognition: false
+      isRunningImageRecognition: false,
+      imagePreview: null
     };
 
     this.goToResultPage = this.goToResultPage.bind(this);
@@ -147,6 +148,21 @@ class AddClothingPage extends Component {
     );
   }
 
+  loadImagePreview(imageFile) {
+    var reader  = new FileReader();
+    // it's onload event and you forgot (parameters)
+
+    reader.onload = function(e) {
+      var image = document.createElement("img");
+      // the result image data
+      image.src = e.target.result;
+      this.setState({ imagePreview: image })
+    }.bind(this)
+
+    // you have to declare the file loading
+    reader.readAsDataURL(imageFile);
+  }
+
   onImageSelected(e) {
     if (e.target.files.length < 1) {
       console.log("Items not selected")
@@ -155,6 +171,9 @@ class AddClothingPage extends Component {
 
       const imageFile = e.target.files[0];
       console.log(imageFile)
+
+      this.loadImagePreview(imageFile)
+
       const recognizer = new ClothingMaterialsRecognizer();
       recognizer.recognize(imageFile).then(materials => {
         console.log("Materials: ")
@@ -181,6 +200,14 @@ class AddClothingPage extends Component {
       </div>
     } else {
       return <CircularProgress variant="determinate" style={{visibility: 'hidden'}} />
+    }
+  }
+
+  imagePreview() {
+    if (this.state.imagePreview !== null) {
+      return <img src={this.state.imagePreview.src} />
+    } else {
+      return <img src="" style={{visibility: 'hidden'}} />
     }
   }
 
@@ -292,6 +319,7 @@ class AddClothingPage extends Component {
               <ActionButton type="Camera" />
             </label>
             {this.imageRecognitionIndicator()}
+            {this.imagePreview()}
           </Grid>
 
             <Grid item xs={12} className={classes.smallCaption}>
