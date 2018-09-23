@@ -36,7 +36,7 @@ const styles = {
     color: 'white',
   },
   fabButton: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: '50px',
     right: '50px',
     backgroundColor: '#7A98E7',
@@ -83,14 +83,14 @@ class ClosetPage extends Component {
             </Grid>
           </Grid>
           <List>
-              {this.props.garmentsArray.map(garment => {
+              {this.props.garmentsArray.sort((item1, item2) => item1.id < item2.id).map(garment => {
                 return (
                   <Paper key={garment.id} className={[classes.paper, classes[garment.happiness]].join(' ')}>
                     <ListItem 
                       button
                       onClick={() => this.props.history.push('/result/' +  garment.id)}
                     >
-                      <GarmentOption type="LongSleeve"/>
+                      <GarmentOption type={garment.type} />
                       <ListItemText primary={garment.name} secondary={moment(garment.dateAdded).format("MMM Do, YY")} />
                     </ListItem>
                   </Paper>

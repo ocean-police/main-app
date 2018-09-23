@@ -176,7 +176,7 @@ class AddClothingPage extends Component {
               <ArrowBack />
             </IconButton>
             <Typography variant="title" color="inherit">
-              Photos
+              Add New Garment
             </Typography>
           </Toolbar>
         </AppBar>

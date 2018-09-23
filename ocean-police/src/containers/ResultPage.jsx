@@ -12,7 +12,7 @@ import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import { numberOfParticlesPerWashByMaterialType, clothingWeightByType, PolutionInfoProvider } from "../utils/PolutionInfoProvider"
 import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-import Hello from '@material-ui/icons/Menu';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 class Result extends React.Component {
 
@@ -125,8 +125,8 @@ class Result extends React.Component {
     return <div className="resultContainer">
         <AppBar position="static" style={{backgroundColor: '#7A98E7'}}>
           <Toolbar>
-            <IconButton color="inherit" aria-label="Menu">
-              <Hello />
+            <IconButton color="inherit" aria-label="Menu" onClick={() => this.props.history.goBack()}>
+              <ArrowBack />
             </IconButton>
             <Typography variant="title" color="inherit">
               Item

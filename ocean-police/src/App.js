@@ -27,7 +27,7 @@ export default class App extends Component{
           <BrowserRouter>
             <div id="application-container">
               <Switch>
-                <Route exact path="/" component={WelcomePage} />
+                <Route exact path="/" component={ClosetPage} />
                 <Route exact path="/add" component={AddClothingPage} />
                 <Route exact path="/result" component={ResultPage}/>
                 <Route exact path="/result/:id" component={ResultPage}/>
