@@ -2,7 +2,19 @@
     width: 100vw;
 }
 
-.chartArea {
-    width: 300px;
-    height: 300px;
+.chart-area-container {
+    width: 100vw;
+    height: 25vh;
+}
+
+.chart-area-left {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.chart-area-right {
+    float: left;
+    width: 50%;
+    height: 100%;
 }

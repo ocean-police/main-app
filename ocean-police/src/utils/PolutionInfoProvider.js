@@ -4,9 +4,43 @@ const clothingWeightByType = {
 };
 
 const numberOfParticlesPerWashByMaterialType = {
-    "cotton": 1369,
-    "nylon": 1562,
-    "polyesters": 4202
+    "Polyester": 1389,
+    "Polyamide": 2470,
+    "Nylon": 2470,
+    "Acrylic": 1359,
+    "Polypropylene": 687,
+    "Elastane": 1389,
+    "Spandex": 1389,
+    "Lycra": 1389,
+    "Acetate": 1389,
+    "Cotton": 0,
+    "Rayon": 0,
+    "Modal": 0,
+    "Lyocell": 0,
+    "Linen": 0,
+    "Wool": 0,
+    "Cashmere": 0,
+    "Viscose": 0
+};
+
+const colorsByMaterialType = {
+    "Polyester": "F8B195",
+    "Polyamide": "AE94C5",
+    "Nylon": "FFCB74",
+    "Acrylic": "BF6C84",
+    "Polypropylene": "6590B2",
+    "Elastane": "F2A45D",
+    "Spandex": "6B5C7B",
+    "Lycra": "DB97DB",
+    "Acetate": "BF5976",
+    "Cotton": "B8E986",
+    "Rayon": "86B358",
+    "Modal": "79C4E0",
+    "Lyocell": "2797DB",
+    "Linen": "50E3C2",
+    "Wool": "F2AD53",
+    "Cashmere": "3EB097",
+    "Viscose": "E7E37F"
 };
 
 const numberOfDaysInYear = 365
@@ -52,4 +86,5 @@ class PolutionInfoProvider {
     }
 }
 
+export { colorsByMaterialType, numberOfParticlesPerWashByMaterialType };
 export default PolutionInfoProvider;
