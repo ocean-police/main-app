@@ -158,6 +158,10 @@ class AddClothingPage extends Component {
     })
   }
 
+  test(){
+    return "test";
+  }
+
   render() {
     const {classes} = this.props;
     return (
