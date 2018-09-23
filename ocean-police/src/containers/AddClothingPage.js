@@ -176,7 +176,9 @@ class AddClothingPage extends Component {
 
   imageRecognitionIndicator() {
     if (this.state.isRunningImageRecognition === true) {
-      return <CircularProgress variant="indeterminate" />
+      return <div className="circular-progress-container">
+        <CircularProgress  variant="indeterminate" />
+      </div>
     } else {
       return <CircularProgress variant="determinate" style={{visibility: 'hidden'}} />
     }
