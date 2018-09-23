@@ -53,3 +53,8 @@ li {
   margin-left: 40%;
   width: 20%;
 }
+
+.circular-progress-container {
+  width: 20%;
+  margin-left: 8%;
+}
