@@ -9,12 +9,12 @@ const styles = {
     width: '80px',
     backgroundColor: 'white',
     border: "1px solid #E2E2E2",
-    
+    cursor:  'pointer',
     borderRadius: '100px',
   },
   iconActiveColor: {
     backgroundColor: '#7A98E7',
-    //box-shadow: "0 1px 7px 0 rgba(0,0,0,0.12)",
+    boxShadow: "0 1px 7px 0 rgba(0,0,0,0.12)",
   },
   icon: {
     transform: 'translate(162%,-50%)',
@@ -42,8 +42,8 @@ class AddClothingPage extends Component {
     
     return (
       <React.Fragment>
-        <div className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
-        <img className={classes.icon} src={ icons[this.props.type]}  />
+        <div onClick={() => {this.props.onClick(this.props.type)}} className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
+          <img className={classes.icon} src={ icons[this.props.type + (this.props.active ? 'White' : '')]}  />
         </div>
         <Typography variant="caption" align="center" className={classes.caption}> {this.props.name} </Typography>
       </React.Fragment>

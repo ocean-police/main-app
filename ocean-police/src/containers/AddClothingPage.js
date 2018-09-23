@@ -25,7 +25,6 @@ const styles = {
   searchSection: {
     fontSize: "40px",
     margin: "3px 0px",
-    border: "1px solid rgba(0,0,0,0.12)",
   },
   buttonWidth: {
     width: "95%",
@@ -53,7 +52,7 @@ class AddClothingPage extends Component {
 
     this.state = {
       name: '',
-      type: null,
+      type: 'Long Sleeve',
       materials: [
         {
           type: "",
@@ -67,7 +66,7 @@ class AddClothingPage extends Component {
   }
 
   goToResultPage() {
-    this.props.history.push('/result');
+    this.props.history.push('/garments');
   }
 
   addMaterial() {
@@ -173,28 +172,28 @@ class AddClothingPage extends Component {
 
           <Grid container alignContent="center">
             <Grid item xs={3}>
-              <GarmentOption type="ShortSleeve" name="Short Sleeve"/>
+              <GarmentOption onClick={type => this.setState({type})} type="ShortSleeve" name="Short Sleeve" active={this.state.type === "ShortSleeve"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="LongSleeve" name="Long Sleeve"/>
+              <GarmentOption onClick={type => this.setState({type})} type="LongSleeve" name="Long Sleeve" active={this.state.type === "LongSleeve"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Pants" name="Pants"/>
+              <GarmentOption onClick={type => this.setState({type})} type="Pants" name="Pants" active={this.state.type === "Pants"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Skirt" name="Skirt"/>
+              <GarmentOption onClick={type => this.setState({type})} type="Skirt" name="Skirt" active={this.state.type === "Skirt"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Jacket" name="Jacket"/>
+              <GarmentOption onClick={type => this.setState({type})} type="Jacket" name="Jacket" active={this.state.type === "Jacket"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Dress" name="Dress"/>
+              <GarmentOption onClick={type => this.setState({type})} type="Dress" name="Dress" active={this.state.type === "Dress"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Underwear" name="Underwear"/>
+              <GarmentOption onClick={type => this.setState({type})} type="Underwear" name="Underwear" active={this.state.type === "Underwear"}/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Socks" name="Socks"/>
+              <GarmentOption onClick={type => this.setState({type})} type="Socks" name="Socks" active={this.state.type === "Socks"}/>
             </Grid>
           </Grid>
 
