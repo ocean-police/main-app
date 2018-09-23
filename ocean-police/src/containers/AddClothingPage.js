@@ -174,28 +174,28 @@ class AddClothingPage extends Component {
 
           <Grid container alignContent="center">
             <Grid item xs={3}>
-              <GarmentOption type="ShortSleeve"/>
+              <GarmentOption type="ShortSleeve" name="Short Sleeve"/>
             </Grid>
             <Grid item xs={3} >
-              <GarmentOption type="LongSleeve"/>
+              <GarmentOption type="LongSleeve" name="Long Sleeve"/>
             </Grid>
             <Grid item xs={3} >
-              <GarmentOption type="Pants"/>
+              <GarmentOption type="Pants" name="Pants"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Skirt"/>
+              <GarmentOption type="Skirt" name="Skirt"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Jacket"/>
+              <GarmentOption type="Jacket" name="Jacket"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Dress"/>
+              <GarmentOption type="Dress" name="Dress"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Underwear"/>
+              <GarmentOption type="Underwear" name="Underwear"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption type="Socks"/>
+              <GarmentOption type="Socks" name="Socks"/>
             </Grid>
           </Grid>
 

@@ -43,7 +43,7 @@ class AddClothingPage extends Component {
         <div className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
           <img className={classes.icon} src={src} alt="logo" />
         </div>
-        <Typography variant="caption" className={classes.caption}> {this.props.type} </Typography>
+        <Typography variant="caption" className={classes.caption}> {this.props.name} </Typography>
       </React.Fragment>
 
 
