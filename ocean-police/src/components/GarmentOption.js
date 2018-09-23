@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles, Typography } from '@material-ui/core';
-import { Jacket } from '../GarmentIcons.js';
+import { icons } from '../GarmentIcons.js';
 
 const styles = {
   garmentCircle: {
@@ -38,12 +38,13 @@ class AddClothingPage extends Component {
 
   render() {
     const { classes } = this.props;
+    
     return (
       <React.Fragment>
         <div className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
-          <img className={classes.icon} src={Jacket} alt="logo" />
+          <img className={classes.icon} src={ icons[this.props.type] } alt="logo" />
         </div>
-        <Typography variant="caption" className={classes.caption}>Short Sleeves</Typography>
+        <Typography variant="caption" className={classes.caption}> {this.props.name} </Typography>
       </React.Fragment>
     );
   }
