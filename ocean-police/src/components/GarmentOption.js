@@ -9,7 +9,6 @@ const styles = {
     width: '80px',
     backgroundColor: 'white',
     border: "1px solid #E2E2E2",
-    
     borderRadius: '100px',
   },
   iconActiveColor: {
