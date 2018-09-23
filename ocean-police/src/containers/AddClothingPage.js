@@ -8,7 +8,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import * as _ from "lodash";
 import ListItemText from '@material-ui/core/ListItemText';
-
 // import { diff } from 'deep-object-diff';
 
 const styles = {
@@ -175,28 +174,28 @@ class AddClothingPage extends Component {
 
           <Grid container alignContent="center">
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="ShortSleeve"/>
+            </Grid>
+            <Grid item xs={3} >
+              <GarmentOption type="LongSleeve"/>
+            </Grid>
+            <Grid item xs={3} >
+              <GarmentOption type="Pants"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Skirt"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Jacket"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Dress"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Underwear"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Socks"/>
             </Grid>
           </Grid>
 
