@@ -9,7 +9,6 @@ const styles = {
   container: {
     margin: "5vw"
   },
-
   garmentType: {
     color: "#435761",
     textAlign: "left",
@@ -26,6 +25,11 @@ const styles = {
     fontSize: "40px",
     margin: "3px 0px",
   },
+  buttonWidth: {
+    width: "95%",
+    margin: "0 2.5%",
+    backgroundColor: "#7A98E7"
+  }
 };
 
 class AddClothingPage extends Component {
@@ -73,14 +77,24 @@ class AddClothingPage extends Component {
               }
             />
           </Grid>
-          <Grid item xs={3} />
-          <Grid item xs={3}>
-            <Button variant="contained" color="primary" onClick={this.goToResultPage}>Save</Button>
+          <Grid item xs={1} />
+          <Grid item xs={5}>
+            <Button
+              variant="contained"
+              className={classes.buttonWidth}
+              color="primary" onClick={this.goToResultPage}>
+              Save
+            </Button>
           </Grid>
-          <Grid item xs={3}>
-            <Button variant="contained" color="primary">Add Another</Button>
+          <Grid item xs={5}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.buttonWidth}>
+              Add Another
+            </Button>
           </Grid>
-          <Grid item xs={3} />
+          <Grid item xs={1} />
         </Grid>
       </div>
     );
