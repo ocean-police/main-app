@@ -1,13 +1,32 @@
 import React, { Component } from 'react';
-import { Button, TextField, withStyles, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
+import { Button, Typography, TextField, withStyles, Grid, InputAdornment, FormControl, InputLabel, Input } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
+
 // import { diff } from 'deep-object-diff';
 
 const styles = {
   container: {
     margin: "5vw"
-  }
+  },
+
+  garmentType: {
+    color: "#435761",
+    textAlign: "left",
+    fontSize: "26px",
+    marginBottom: "4px",
+  },
+  direction: {
+    color: "#435761",
+    textAlign: "left",
+    fontSize: "14px",
+    marginBottom: "2px",
+  },
+  searchSection: {
+    fontSize: "40px",
+    margin: "3px 0px",
+  },
 };
 
 class AddClothingPage extends Component {
@@ -34,15 +53,36 @@ class AddClothingPage extends Component {
       <div className={classes.container}>
         <Grid container className={classes.root}>
           <Grid item xs={12}>
-            <TextField item xs={10}
+            <Typography className={classes.garmentType}>
+              Garment Type
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className="direction-type-1 full-width">
+            <Typography className={classes.direction}>
+              Start your entry with garment type
+            </Typography>
+          </Grid>
+          <Grid item xs={12} className={classes.searchSection}>
+            <Input
+              id="input-with-icon-adornment"
               fullWidth
-              id="standard"
-              label="Search garment"
-              className={classes.textField}
-              margin="normal"
+              placeholder="Search garment"
+              startAdornment={
+                <InputAdornment position="start">
+                  <Search />
+                </InputAdornment>
+              }
             />
           </Grid>
-        </Grid>
+          <Grid item xs={3} />
+          <Grid item xs={3}>
+            <Button variant="contained" color="primary" onClick={this.goToResultPage}>Save</Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button variant="contained" color="primary">Add Another</Button>
+          </Grid>
+          <Grid item xs={3} />
+
         <Grid container>
           <Grid item xs={3}>
             <GarmentOption />
@@ -68,6 +108,8 @@ class AddClothingPage extends Component {
           <Grid item xs={3}>
             <GarmentOption />
           </Grid>
+        </Grid>
+          
         </Grid>
         <div>
           <Button variant="contained" color="primary" onClick={this.goToResultPage}>See Result</Button>
