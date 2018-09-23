@@ -95,6 +95,15 @@ class AddClothingPage extends Component {
     });
   }
 
+  updateClothingMaterialField (clothingIndex, materialsIndex, stateValueToUpdate, value) {
+    console.log("typing", clothingIndex, materialsIndex, value);
+    var newState = this.state.updatedAttributes;
+    newState[clothingIndex]["materials"][materialsIndex][stateValueToUpdate] = value;
+    this.setState({
+      updatedAttriutes: newState
+    })
+  }
+
   renderGarmentList() {
     return this.state.updatedAttributes.map((item, clothingIndex) => {
        return <div key={`clothing-index=${clothingIndex}`} className={`clothing-index-${clothingIndex}`}>
@@ -108,13 +117,15 @@ class AddClothingPage extends Component {
                    id="input-standard"
                    placeholder="Material"
                    className="listitem-input-left"
-                   defaultValue={materialItem["material"]}
+                   value={materialItem["material"]}
+                   onChange={(e) => this.updateClothingMaterialField(clothingIndex, materialsIndex, "material", e.target.value)}
                  />
                  <Input
                    id="adornment-percentage"
                    placeholder="Percentage"
                    className="listitem-input-middle"
-                   defaultValue={materialItem["percentage"]}
+                   value={materialItem["percentage"]}
+                   onChange={(e) => this.updateClothingMaterialField(clothingIndex, materialsIndex, "percentage", e.target.value)}
                    endAdornment={<InputAdornment position="end">%</InputAdornment>}
                  >
                  </Input>
