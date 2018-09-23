@@ -3,6 +3,7 @@ import {Chart, Axis, Series, Tooltip, Cursor, Pie} from "react-charts";
 import badSmileyIcon from "../resources/smileyIcon.JPG"
 import plasticBagIcon from "../resources/plasticBag.JPG"
 import ocean from "../resources/ocean.JPG"
+import pantsIcon from "../resources/pants.JPG"
 
 export default class Result extends React.Component {
 
@@ -58,10 +59,40 @@ export default class Result extends React.Component {
     })
   }
 
+  getDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth(); //January is 0!
+    var yyyy = today.getFullYear();
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    today = monthNames[mm].substring(0, 3) + ' ' + dd + ', ' + yyyy;
+    return today
+  }
+
 
   render() {
     //you can declare var here
     return <div className="resultContainer">
+
+
+
+      <div className="closet-area-container">
+        <div className="date">
+          {this.getDate()}
+        </div>
+        <div className="legend-heading">
+          Garment Type
+        </div>
+        <div className="legend-subheading">
+          Let's analyze what's in your cloth.
+        </div>
+        <img className="closet-item-image" src={pantsIcon}/>
+        <div className="garment-type-description">
+          Pants
+        </div>
+      </div>
 
       <div className="chart-area-container">
         <div className="legend-heading">
@@ -104,7 +135,7 @@ export default class Result extends React.Component {
           <div className="micro-plastics-cover-right">
             <div className="legend-description">
               Microplastics/Year
-              <div className="micro-plastics-figure">
+              <div className="micro-plastics-figure yearly-figure">
                 2.02
                 <span className="micro-plastics-unit">g</span>
               </div>
