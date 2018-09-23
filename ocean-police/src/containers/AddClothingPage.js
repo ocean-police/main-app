@@ -26,17 +26,33 @@ class AddClothingPage extends Component {
     super(props);
 
     this.state = {
-      updatedAttributes: {
-        name: '',
-        type: 'T_SHIRT',
-        materials: [],
-        washingPeriod: 1,
-      },
+      updatedAttributes: [
+        {
+          name: 'The only T-shirt',
+          type: 'T_SHIRT',
+          materials: [
+            {
+              material: "",
+              percentage: 0,
+            }
+          ],
+          washingPeriod: 1,
+        },
+      ]
     };
+    this.renderGarmentList = this.renderGarmentList.bind(this);
   }
 
   goToResultPage() {
     window.location.href = 'result';
+  }
+
+  renderGarmentList() {
+    return this.state.updatedAttributes.map((item) => {
+       return <div>
+        {item.type}
+      </div>
+    })
   }
 
   render() {
@@ -66,7 +82,6 @@ class AddClothingPage extends Component {
               }
             />
           </Grid>
-
           <Grid container>
             <Grid item xs={3}>
               <GarmentOption />
@@ -93,25 +108,28 @@ class AddClothingPage extends Component {
               <GarmentOption />
             </Grid>
           </Grid>
-
           <Grid item xs={1} />
-          <Grid item xs={5}>
-            <Button
-              variant="contained"
-              className={classes.buttonWidth}
-              color="primary" onClick={this.goToResultPage}>
-              Save
-            </Button>
+
+          {this.renderGarmentList()}
+
+          <Grid item xs={12}>
+            <Grid item xs={5}>
+              <Button
+                variant="contained"
+                className={classes.buttonWidth}
+                color="primary" onClick={this.goToResultPage}>
+                Save
+              </Button>
+            </Grid>
+            <Grid item xs={5}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.buttonWidth}>
+                Add Another
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={5}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.buttonWidth}>
-              Add Another
-            </Button>
-          </Grid>
-          <Grid item xs={3} />
         </Grid>
       </div>
     );
