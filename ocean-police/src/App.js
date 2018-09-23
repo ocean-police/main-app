@@ -8,6 +8,7 @@ import WelcomePage from './containers/WelcomePage';
 import AddClothingPage from './containers/AddClothingPage';
 import configureStore from './store/index';
 import ResultPage from './containers/ResultPage.jsx';
+import ClosetPage from './containers/ClosetPage';
 
 const store = configureStore();
 
@@ -29,6 +30,8 @@ export default class App extends Component{
                 <Route exact path="/" component={WelcomePage} />
                 <Route exact path="/add" component={AddClothingPage} />
                 <Route exact path="/result" component={ResultPage}/>
+                <Route exact path="/result/:id" component={ResultPage}/>
+                <Route exact path="/garments" component={ClosetPage}/>
               </Switch>
             </div>
           </BrowserRouter>
