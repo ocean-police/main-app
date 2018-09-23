@@ -6,7 +6,15 @@ import Jacket from '../src/styles/icons/jacket.png';
 import Dress from '../src/styles/icons/dress.png';
 import Underwear from '../src/styles/icons/underwear.png';
 import Socks from '../src/styles/icons/socks.png';
-import Camera from '../src/styles/icons/camera.png';
+import ShortSleeveWhite from '../src/styles/icons/shortsleeve-white.png';
+import LongSleeveWhite from '../src/styles/icons/longsleeve-white.png';
+import PantsWhite from '../src/styles/icons/pants-white.png';
+import SkirtWhite from '../src/styles/icons/skirt-white.png';
+import JacketWhite from '../src/styles/icons/jacket-whie.png';
+import DressWhite from '../src/styles/icons/dress-white.png';
+import UnderwearWhite from '../src/styles/icons/underwear-white.png';
+import SocksWhite from '../src/styles/icons/socks-white.png';
+import Camera from '../src/styles/icons/camera-white.png';
 
 const icons = {
 	ShortSleeve,
@@ -17,6 +25,14 @@ const icons = {
     Dress,
     Underwear,
     Socks,
+    ShortSleeveWhite,
+	LongSleeveWhite,
+	PantsWhite,
+	SkirtWhite,
+    JacketWhite,
+    DressWhite,
+    UnderwearWhite,
+    SocksWhite,
     Camera,
 };
 
