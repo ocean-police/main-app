@@ -145,7 +145,9 @@ class Result extends React.Component {
         <div className="legend-subheading">
           Let's analyze what's in your cloth.
         </div>
-        <GarmentOption type="Pants" name="Pants" active/>
+        <div className="garment-cover">
+          <GarmentOption className="garment-icon" type="Pants" name="Pants" active/>
+        </div>
       </div>
 
       <div className="chart-area-container">
