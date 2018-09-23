@@ -223,10 +223,10 @@ class AddClothingPage extends Component {
 
             <Grid container alignContent="center">
               <Grid item xs={3}>
-                <GarmentOption onClick={type => this.setState({type})} type="ShortSleeve" name="Short Sleeve" active={this.state.type === "ShortSleeve"}/>
+                <GarmentOption onClick={type => this.setState({type})} type="Short Sleeve" name="Short Sleeve" active={this.state.type === "Short Sleeve"}/>
               </Grid>
               <Grid item xs={3}>
-                <GarmentOption onClick={type => this.setState({type})} type="LongSleeve" name="Long Sleeve" active={this.state.type === "LongSleeve"}/>
+                <GarmentOption onClick={type => this.setState({type})} type="Long Sleeve" name="Long Sleeve" active={this.state.type === "Long Sleeve"}/>
               </Grid>
               <Grid item xs={3}>
                 <GarmentOption onClick={type => this.setState({type})} type="Pants" name="Pants" active={this.state.type === "Pants"}/>
