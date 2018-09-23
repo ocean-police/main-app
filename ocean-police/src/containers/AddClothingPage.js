@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
 import ActionButton from '../components/ActionButton';
-import {Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem} from '@material-ui/core';
+import {Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem, CircularProgress} from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
@@ -61,6 +61,7 @@ class AddClothingPage extends Component {
         },
       ],
       washingPeriod: 1,
+      isRunningImageRecognition: false
     };
 
     this.goToResultPage = this.goToResultPage.bind(this);
@@ -149,6 +150,8 @@ class AddClothingPage extends Component {
     if (e.target.files.length < 1) {
       console.log("Items not selected")
     } else {
+      this.setState({isRunningImageRecognition: true})
+
       const imageFile = e.target.files[0];
       console.log(imageFile)
       const recognizer = new ClothingMaterialsRecognizer();
@@ -158,10 +161,23 @@ class AddClothingPage extends Component {
   
         this.setState({
           materials: materials,
+          isRunningImageRecognition: false
         });
       }).catch(error => {
         console.error("Error: " + error)
+
+        this.setState({
+          isRunningImageRecognition: false
+        });
       })
+    }
+  }
+
+  imageRecognitionIndicator() {
+    if (this.state.isRunningImageRecognition === true) {
+      return <CircularProgress variant="indeterminate" />
+    } else {
+      return <CircularProgress variant="determinate" style={{visibility: 'hidden'}} />
     }
   }
 
@@ -259,8 +275,9 @@ class AddClothingPage extends Component {
           <Grid item xs={8}>
             <label htmlFor='myInput'>
               <input id="myInput" style={{visibility: 'hidden'}} type="file" accept="image/*" onChange={e => this.onImageSelected(e) }/>
-              <ActionButton type="Camera"/>
+              <ActionButton type="Camera" />
             </label>
+            {this.imageRecognitionIndicator()}
           </Grid>
 
           <Grid item xs={12} className={classes.smallCaption}>
