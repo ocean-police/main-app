@@ -4,19 +4,19 @@ const seed = {
   '1': {
     name: 'my red Tees',
     id: '1',
-    type: 'T_SHIRT',
+    type: 'Short Sleeve',
     happiness: 'happy',
     materials: [
       {
-        type: 'POLYESTER',
+        type: 'Wool',
         percentage: 50,
       },
       {
-        type: 'COTTON',
+        type: 'Cotton',
         percentage: 25,
       },
       {
-        type: 'METAL',
+        type: 'Polypropylene',
         percentage: 25,
       },
     ],
@@ -27,11 +27,11 @@ const seed = {
   '2': {
     name: 'Jacket #1',
     id: '2',
-    type: 'JACKET',
+    type: 'Jacket',
     happiness: 'medium',
     materials: [
       {
-        type: 'Leather',
+        type: 'Elastane',
         percentage: 100,
       },
     ],
@@ -62,11 +62,14 @@ const clothings = (state = seed, action) => {
           happiness = "happy";
         }
 
-        newState[counter++] = {
+        const currentCounter = counter++;
+
+        newState[currentCounter] = {
           ...action.garment,
           dateAdded: new Date(),
           happiness,
           polutionPerWash,
+          id: currentCounter,
         };
         console.log(newState);
         return newState;

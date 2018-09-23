@@ -2,34 +2,41 @@ import React from 'react';
 import {Chart, Axis, Series, Tooltip, Cursor, Pie} from "react-charts";
 import badSmileyIcon from "../resources/smileyIcon.JPG"
 import plasticBagIcon from "../resources/plasticBag.JPG"
-import ocean from "../resources/ocean.JPG"
-import pantsIcon from "../resources/pants.JPG"
+import ocean from "../resources/ocean.JPG";
+import GarmentOption from '../components/GarmentOption';
+import pantsIcon from "../resources/pants.JPG";
 import { numberOfParticlesPerWashByMaterialType, clothingWeightByType, PolutionInfoProvider } from "../utils/PolutionInfoProvider"
+import { withRouter } from 'react-router-dom';
+import {connect} from 'react-redux';
 
-export default class Result extends React.Component {
+
+class Result extends React.Component {
 
   constructor(props) {
     super(props);
 
-    const clothing = {
-        "type": Object.keys(clothingWeightByType)[0],
-        "washingPeriod": 3,
-        "name": "test",
-        "materials": [
-          {
-            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[0],
-            "percentage": 20
-          },
-          {
-            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[1],
-            "percentage": 55
-          },
-          {
-            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[2],
-            "percentage": 25
-          }
-        ]
-    }
+    // const clothing = {
+    //     "type": Object.keys(clothingWeightByType)[0],
+    //     "washingPeriod": 3,
+    //     "name": "test",
+    //     "materials": [
+    //       {
+    //         "type": Object.keys(numberOfParticlesPerWashByMaterialType)[0],
+    //         "percentage": 20
+    //       },
+    //       {
+    //         "type": Object.keys(numberOfParticlesPerWashByMaterialType)[1],
+    //         "percentage": 55
+    //       },
+    //       {
+    //         "type": Object.keys(numberOfParticlesPerWashByMaterialType)[2],
+    //         "percentage": 25
+    //       }
+    //     ]
+    // }
+    const clothing = this.props.garments[this.props.match.params.id];
+
+    console.log(clothing);
 
     const materials = clothing["materials"].map(material => {
       return [material["type"], material["percentage"]]
@@ -125,10 +132,7 @@ export default class Result extends React.Component {
         <div className="legend-subheading">
           Let's analyze what's in your cloth.
         </div>
-        <img className="closet-item-image" src={pantsIcon}/>
-        <div className="garment-type-description">
-          Pants
-        </div>
+        <GarmentOption type="Pants" name="Pants" active/>
       </div>
 
       <div className="chart-area-container">
@@ -198,3 +202,11 @@ export default class Result extends React.Component {
   }
 }
 
+const mapStateToProps = (state, ownProps) => ({
+  garments: state.clothings,
+});
+
+const mapDispatchToProps = dispatch => ({
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Result));
