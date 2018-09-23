@@ -16,7 +16,7 @@ class WelcomePage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className="get-started-cover">
          <Button onClick={() => {this.props.history.push('/add')}}>
             Get Started
         </Button>

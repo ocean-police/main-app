@@ -43,7 +43,7 @@ class AddClothingPage extends Component {
     return (
       <React.Fragment>
         <div onClick={() => {this.props.onClick(this.props.type)}} className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
-          <img className={classes.icon} src={ icons[this.props.type + (this.props.active ? 'White' : '')]}  />
+          <img className={classes.icon} src={ icons[this.props.type.replace(/\s/g, "") + (this.props.active ? 'White' : '')]}  />
         </div>
         <Typography variant="caption" align="center" className={classes.caption}> {this.props.name} </Typography>
       </React.Fragment>
