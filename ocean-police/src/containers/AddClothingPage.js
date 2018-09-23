@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
 import ActionButton from '../components/ActionButton';
-import {Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem, CircularProgress} from '@material-ui/core';
+import {AppBar, Toolbar, IconButton, Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem, CircularProgress} from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 import * as _ from "lodash";
 import ListItemText from '@material-ui/core/ListItemText';
@@ -184,92 +185,103 @@ class AddClothingPage extends Component {
   render() {
     const {classes} = this.props;
     return (
-      <div className={classes.container}>
-        <Grid container className={classes.root} alignItems="center" spacing={24}>
-          <Grid item xs={12} className="direction-type-1 full-width">
-            <Typography variant="display1">
-              Garment Type
+      <React.Fragment>
+        <AppBar position="static" color="default">
+          <Toolbar>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+              <ArrowBack />
+            </IconButton>
+            <Typography variant="title" color="inherit">
+              Photos
             </Typography>
-            <Typography variant="caption">
-              Start your entry with garment type
-            </Typography>
-          </Grid>
-          <Grid item xs={12} className={classes.searchSection}>
-            <Input
-              id="input-with-icon-adornment"
-              fullWidth
-              placeholder="Search garment"
-              startAdornment={
-                <InputAdornment position="start">
-                  <Search/>
-                </InputAdornment>
-              }
-            />
-          </Grid>
+          </Toolbar>
+        </AppBar>
+        <div className={classes.container}>
+          <Grid container className={classes.root} alignItems="center" spacing={24}>
+            <Grid item xs={12} className="direction-type-1 full-width">
+              <Typography variant="display1">
+                Garment Type
+              </Typography>
+              <Typography variant="caption">
+                Start your entry with garment type
+              </Typography>
+            </Grid>
+            <Grid item xs={12} className={classes.searchSection}>
+              <Input
+                id="input-with-icon-adornment"
+                fullWidth
+                placeholder="Search garment"
+                startAdornment={
+                  <InputAdornment position="start">
+                    <Search/>
+                  </InputAdornment>
+                }
+              />
+            </Grid>
 
-          <Grid container alignContent="center">
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="ShortSleeve" name="Short Sleeve" active={this.state.type === "ShortSleeve"}/>
+            <Grid container alignContent="center">
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="ShortSleeve" name="Short Sleeve" active={this.state.type === "ShortSleeve"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="LongSleeve" name="Long Sleeve" active={this.state.type === "LongSleeve"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="Pants" name="Pants" active={this.state.type === "Pants"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="Skirt" name="Skirt" active={this.state.type === "Skirt"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="Jacket" name="Jacket" active={this.state.type === "Jacket"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="Dress" name="Dress" active={this.state.type === "Dress"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="Underwear" name="Underwear" active={this.state.type === "Underwear"}/>
+              </Grid>
+              <Grid item xs={3}>
+                <GarmentOption onClick={type => this.setState({type})} type="Socks" name="Socks" active={this.state.type === "Socks"}/>
+              </Grid>
             </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="LongSleeve" name="Long Sleeve" active={this.state.type === "LongSleeve"}/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="Pants" name="Pants" active={this.state.type === "Pants"}/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="Skirt" name="Skirt" active={this.state.type === "Skirt"}/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="Jacket" name="Jacket" active={this.state.type === "Jacket"}/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="Dress" name="Dress" active={this.state.type === "Dress"}/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="Underwear" name="Underwear" active={this.state.type === "Underwear"}/>
-            </Grid>
-            <Grid item xs={3}>
-              <GarmentOption onClick={type => this.setState({type})} type="Socks" name="Socks" active={this.state.type === "Socks"}/>
-            </Grid>
-          </Grid>
 
 
-          <Grid item xs={4}/>
+            <Grid item xs={4}/>
 
-          <Grid item xs={5}>
-            <Button variant="outlined" size="small" color="default" className={classes.button}>
-              See More
-            </Button>
-          </Grid>
+            <Grid item xs={5}>
+              <Button variant="outlined" size="small" color="default" className={classes.button}>
+                See More
+              </Button>
+            </Grid>
 
-          <Grid item xs={12}>
-            <Typography variant="display1">
-              Name Your Garment
-            </Typography>
-            <Typography variant="caption">
-              To help you find your favourite garment in your Closet
-            </Typography>
-          </Grid>
+            <Grid item xs={12}>
+              <Typography variant="display1">
+                Name Your Garment
+              </Typography>
+              <Typography variant="caption">
+                To help you find your favourite garment in your Closet
+              </Typography>
+            </Grid>
 
-          <Grid item xs={12} className={classes.searchSection}>
-            <Input
-              id="input-without-icon-adornment"
-              fullWidth
-              onChange={e => {this.setState({name: e.target.value})}}
-              value={this.state.name}
-              placeholder="Short Sleeve 1"
-            />
-          </Grid>
+            <Grid item xs={12} className={classes.searchSection}>
+              <Input
+                id="input-without-icon-adornment"
+                fullWidth
+                onChange={e => {this.setState({name: e.target.value})}}
+                value={this.state.name}
+                placeholder="Short Sleeve 1"
+              />
+            </Grid>
 
-          <Grid item xs={12}>
-            <Typography variant="display1">
-              Material Composition
-            </Typography>
-            <Typography variant="caption">
-              Take a picture of the tag that contains the material composition
-            </Typography>
-          </Grid>
+            <Grid item xs={12}>
+              <Typography variant="display1">
+                Material Composition
+              </Typography>
+              <Typography variant="caption">
+                Take a picture of the tag that contains the material composition
+              </Typography>
+            </Grid>
 
           <Grid item xs={4} />
           <Grid item xs={8}>
@@ -280,67 +292,68 @@ class AddClothingPage extends Component {
             {this.imageRecognitionIndicator()}
           </Grid>
 
-          <Grid item xs={12} className={classes.smallCaption}>
-            <Typography variant="caption" align="left">Or input the materials manually</Typography>
-          </Grid>
-          
-          <Grid item xs={12}>
-            {this.renderGarmentList()}
-          </Grid>
+            <Grid item xs={12} className={classes.smallCaption}>
+              <Typography variant="caption" align="left">Or input the materials manually</Typography>
+            </Grid>
+            
+            <Grid item xs={12}>
+              {this.renderGarmentList()}
+            </Grid>
 
-          <Grid item xs={12}>
-            <Typography variant="display1">
-              Washing Habits
-            </Typography>
-            <Typography variant="caption">
-              Let's see how often will you be washing this garment.
-            </Typography>
-          </Grid>
+            <Grid item xs={12}>
+              <Typography variant="display1">
+                Washing Habits
+              </Typography>
+              <Typography variant="caption">
+                Let's see how often will you be washing this garment.
+              </Typography>
+            </Grid>
 
-          <Grid item xs={12}>
-            <Select
-              value={`${this.state.washingPeriod}`}
-              onChange={(e) => this.setState({washingPeriod: parseInt(e.target.value)})}
-              fullWidth
-              className={classes.washingPeriodSelect}
-            >
-              <MenuItem value="1">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value="1">Every 1 Week</MenuItem>
-              <MenuItem value="2">Every 2 Weeks</MenuItem>
-              <MenuItem value="3">Every 3 Weeks</MenuItem>
-              <MenuItem value="4">A Month</MenuItem>
-              <MenuItem value="5">Custom</MenuItem>
-            </Select>
-          </Grid>
-          
+            <Grid item xs={12}>
+              <Select
+                value={`${this.state.washingPeriod}`}
+                onChange={(e) => this.setState({washingPeriod: parseInt(e.target.value)})}
+                fullWidth
+                className={classes.washingPeriodSelect}
+              >
+                <MenuItem value="1">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value="1">Every 1 Week</MenuItem>
+                <MenuItem value="2">Every 2 Weeks</MenuItem>
+                <MenuItem value="3">Every 3 Weeks</MenuItem>
+                <MenuItem value="4">A Month</MenuItem>
+                <MenuItem value="5">Custom</MenuItem>
+              </Select>
+            </Grid>
+            
 
-          <Grid item xs={5}>
-            <Button
-              variant="contained"
-              className={classes.buttonWidth}
-              onClick={() => {
-                this.props.save(this.state);
-                this.goToResultPage();
-              }}
-              color="primary">
-              Save
-            </Button>
-          </Grid>
+            <Grid item xs={5}>
+              <Button
+                variant="contained"
+                className={classes.buttonWidth}
+                onClick={() => {
+                  this.props.save(this.state);
+                  this.goToResultPage();
+                }}
+                color="primary">
+                Save
+              </Button>
+            </Grid>
 
-          <Grid item xs={5}>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.buttonWidth}>
-              Add Another
-            </Button>
-          </Grid>
-          <Grid item xs={3}/>
+            <Grid item xs={5}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.buttonWidth}>
+                Add Another
+              </Button>
+            </Grid>
+            <Grid item xs={3}/>
 
-        </Grid>
-      </div>
+          </Grid>
+        </div>
+      </React.Fragment>
     );
   }
 }
