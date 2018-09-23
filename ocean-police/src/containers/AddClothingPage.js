@@ -220,22 +220,6 @@ class AddClothingPage extends Component {
             </Button>
           </Grid>
 
-        <Grid item xs={12}>
-          <Typography variant="display1">
-            Name Your Garment
-          </Typography>
-          <Typography variant="caption">
-            To help you find your favourite garment in your Closet
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12} className={classes.searchSection}>
-          <Input
-            id="input-without-icon-adornment"
-            fullWidth
-            placeholder="Short Sleeve 1"
-          />
-        </Grid>
           <Grid item xs={12}>
             <Typography variant="display1">
               Name Your Garment
