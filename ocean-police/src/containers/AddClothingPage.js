@@ -49,7 +49,7 @@ class AddClothingPage extends Component {
       type: null,
       materials: [
         {
-          material: "",
+          type: "",
           percentage: 0,
         },
       ],
@@ -67,7 +67,7 @@ class AddClothingPage extends Component {
     var newMaterials = [...this.state.materials];
     newMaterials.push(
       {
-        material: "",
+        type: "",
         percentage: 0,
       },
     )
@@ -103,8 +103,8 @@ class AddClothingPage extends Component {
                   id="input-standard"
                   placeholder="Material"
                   className="listitem-input-left"
-                  value={materialItem["material"]}
-                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "material", e.target.value)}
+                  value={materialItem["type"]}
+                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "type", e.target.value)}
                 />
                 <Input
                   id="adornment-percentage"
