@@ -30,6 +30,7 @@ export default class App extends Component{
                 <Route exact path="/" component={WelcomePage} />
                 <Route exact path="/add" component={AddClothingPage} />
                 <Route exact path="/result" component={ResultPage}/>
+                <Route exact path="/result/:id" component={ResultPage}/>
                 <Route exact path="/garments" component={ClosetPage}/>
               </Switch>
             </div>
