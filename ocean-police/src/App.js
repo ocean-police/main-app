@@ -7,6 +7,7 @@ import './styles/result.css';
 import WelcomePage from './containers/WelcomePage';
 import AddClothingPage from './containers/AddClothingPage';
 import configureStore from './store/index';
+import ResultPage from './containers/ResultPage.jsx';
 
 const store = configureStore();
 
@@ -27,6 +28,7 @@ export default class App extends Component{
               <Switch>
                 <Route exact path="/" component={WelcomePage} />
                 <Route exact path="/add" component={AddClothingPage} />
+                <Route exact path="/result" component={ResultPage}/>
               </Switch>
             </div>
           </BrowserRouter>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-// import { } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Button, TextField, withStyles, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 // import { diff } from 'deep-object-diff';
 
 const styles = {
-
+  container: {
+    margin: "5vw"
+  }
 };
 
 class AddClothingPage extends Component {
@@ -22,11 +23,28 @@ class AddClothingPage extends Component {
     };
   }
 
+  goToResultPage() {
+    window.location.href = 'result';
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.container}>
-        Hello
+        <Grid container className={classes.root}>
+          <Grid item xs={12}>
+            <TextField item xs={10}
+                       fullWidth
+              id="standard"
+              label="Search garment"
+              className={classes.textField}
+              margin="normal"
+            />
+          </Grid>
+        </Grid>
+        <div>
+          <Button variant="contained" color="primary" onClick={this.goToResultPage}>See Result</Button>
+        </div>
       </div>
     );
   }

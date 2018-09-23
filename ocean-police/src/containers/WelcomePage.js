@@ -17,7 +17,7 @@ class WelcomePage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Button onClick={() => {this.props.history.push('/add')}}>
+         <Button onClick={() => {this.props.history.push('/add')}}>
             Get Started
         </Button>
       </div>
