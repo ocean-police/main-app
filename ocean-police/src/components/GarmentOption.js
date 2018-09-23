@@ -8,7 +8,8 @@ const styles = {
     height: '80px',
     width: '80px',
     backgroundColor: 'white',
-    boxShadow: '0 1px 7px 0 rgba(0,0,0,0.12)',
+    border: "1px solid #E2E2E2",
+    
     borderRadius: '100px',
   },
   iconActiveColor: {
