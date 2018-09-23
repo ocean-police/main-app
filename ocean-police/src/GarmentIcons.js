@@ -1,11 +1,11 @@
-import Jacket from '../src/styles/icons/jacket.svg';
-import ShortSleeve from '../src/styles/icons/shortsleeve.svg';
-import LongSleeve from '../src/styles/icons/longsleeve.svg';
-import Pants from '../src/styles/icons/pants.svg';
-import Skirt from '../src/styles/icons/skirt.svg';
-import Dress from '../src/styles/icons/dress.svg';
-import Underwear from '../src/styles/icons/underwear.svg';
-import Socks from '../src/styles/icons/socks.svg';
+import Jacket from '../src/styles/icons/jacket.png';
+import ShortSleeve from '../src/styles/icons/shortsleeve.png';
+import LongSleeve from '../src/styles/icons/longsleeve.png';
+import Pants from '../src/styles/icons/pants.png';
+import Skirt from '../src/styles/icons/skirt.png';
+import Dress from '../src/styles/icons/dress.png';
+import Underwear from '../src/styles/icons/underwear.png';
+import Socks from '../src/styles/icons/socks.png';
 
 
 const icons = {
