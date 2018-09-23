@@ -8,7 +8,7 @@ class ClothingMaterialsRecognizer {
             return totalPercentage + percentage
             })
         
-        if (totalPercentage != 100) {
+        if (totalPercentage !== 100) {
             throw "Invalid total percentage: " + totalPercentage
         }
     }
@@ -26,6 +26,8 @@ class ClothingMaterialsRecognizer {
                     }
                 }
             }
+        } else {
+            return false;
         }
     
         return true;
@@ -63,7 +65,7 @@ class ClothingMaterialsRecognizer {
                 .split("%")
                 .map(string => { return string.trim() })
             
-            if (components.length != 2) {
+            if (components.length !== 2) {
                 throw "Invalid material components: " + components
             }
 
@@ -111,8 +113,13 @@ class ClothingMaterialsRecognizer {
                 canvas.width = width;
                 canvas.height = height;
                 var ctx = canvas.getContext("2d");
+                
                 if (width > height) {
-                    ctx.rotate(90 * Math.PI / 180)
+                    ctx.rotate(-90 * Math.PI / 180)
+
+                    const temp = width
+                    width = height
+                    height = temp
                 }
 
                 ctx.drawImage(img, 0, 0, width, height);
@@ -135,6 +142,8 @@ class ClothingMaterialsRecognizer {
                         console.log("Finished image recognition")
                         
                         const recognizedText = result["text"]
+                        console.log("Recognized text: " + recognizedText)
+
                         const materials = this.findMaterialsFromLabelText(recognizedText)
 
                         this.validateMaterialsTotalPercentage(materials);

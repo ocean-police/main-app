@@ -35,7 +35,8 @@
 .legend-heading {
     font-size: 24px;
     color: #435761;
-    padding-left: 20px
+    padding-left: 20px;
+    font-weight: 600;
 }
 
 .legend-subheading {
@@ -88,6 +89,7 @@
     float: left;
     padding: 20px;
     background-color: #FAFAFA;
+    margin-top: 10px;
 }
 
 .micro-plastics-cover-right {
@@ -97,6 +99,7 @@
     float: left;
     padding: 20px;
     background-color: #FAFAFA;
+    margin-top: 10px;
 }
 
 .micro-plastics-figure {
@@ -106,4 +109,78 @@
 
 .micro-plastics-unit {
     font-size: 16px;
+}
+
+plastics-release-container {
+    color: #435761;
+}
+
+.plastic-release-header {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #435761;
+}
+
+.plastic-release-logo {
+    width: 48%;
+    margin-left: 42%;
+}
+
+.plastic-release-left {
+    float: left;
+    width: 50%;
+    height: 125px;
+}
+
+.plastic-release-pollution-amount {
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.plastic-release-subgroup {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+    color: #435761;
+}
+
+.plastic-release-content {
+    width: 100%;
+    overflow-y: auto;
+    color: #435761;
+}
+
+.ocean-rendering {
+    width: 100%;
+}
+
+chart-details-container {
+    
+}
+
+.garment-type-description {
+    text-align: center;
+    color: #9E9E9E;
+}
+
+.closet-area-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.closet-item-image {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.date {
+    color: #97A2A7;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.yearly-figure {
+    color: #7D6299;
 }

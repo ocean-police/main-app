@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
+import ActionButton from '../components/ActionButton';
 import {Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem} from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+
+import * as _ from "lodash";
+import ListItemText from '@material-ui/core/ListItemText';
+import {icons} from '../GarmentIcons';
+// import { diff } from 'deep-object-diff';
+
 import { withRouter } from 'react-router-dom';
 
 const styles = {
@@ -48,7 +55,7 @@ class AddClothingPage extends Component {
       type: 't-shirt',
       materials: [
         {
-          material: "",
+          type: "",
           percentage: 0,
         },
       ],
@@ -66,7 +73,7 @@ class AddClothingPage extends Component {
     var newMaterials = [...this.state.materials];
     newMaterials.push(
       {
-        material: "",
+        type: "",
         percentage: 0,
       },
     )
@@ -102,8 +109,8 @@ class AddClothingPage extends Component {
                   id="input-standard"
                   placeholder="Material"
                   className="listitem-input-left"
-                  value={materialItem["material"]}
-                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "material", e.target.value)}
+                  value={materialItem["type"]}
+                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "type", e.target.value)}
                 />
                 <Input
                   id="adornment-percentage"
@@ -164,28 +171,28 @@ class AddClothingPage extends Component {
 
           <Grid container alignContent="center">
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="ShortSleeve" name="Short Sleeve"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="LongSleeve" name="Long Sleeve"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Pants" name="Pants"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Skirt" name="Skirt"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Jacket" name="Jacket"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Dress" name="Dress"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Underwear" name="Underwear"/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption/>
+              <GarmentOption type="Socks" name="Socks"/>
             </Grid>
           </Grid>
 
@@ -228,11 +235,11 @@ class AddClothingPage extends Component {
 
           <Grid item xs={4} />
           <Grid item xs={8}>
-            <GarmentOption />
+            <ActionButton type="Camera"/>
           </Grid>
 
           <Grid item xs={12} className={classes.smallCaption}>
-            <Typography variant="caption">Or input the materials manually</Typography>
+            <Typography variant="caption" align="left">Or input the materials manually</Typography>
           </Grid>
           
           <Grid item xs={12}>

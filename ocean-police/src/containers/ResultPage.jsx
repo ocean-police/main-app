@@ -1,11 +1,49 @@
 import React from 'react';
 import {Chart, Axis, Series, Tooltip, Cursor, Pie} from "react-charts";
 import badSmileyIcon from "../resources/smileyIcon.JPG"
+import plasticBagIcon from "../resources/plasticBag.JPG"
+import ocean from "../resources/ocean.JPG"
+import pantsIcon from "../resources/pants.JPG"
+import { numberOfParticlesPerWashByMaterialType, clothingWeightByType, PolutionInfoProvider } from "../utils/PolutionInfoProvider"
 
 export default class Result extends React.Component {
 
   constructor(props) {
     super(props);
+
+    const clothing = {
+        "type": Object.keys(clothingWeightByType)[0],
+        "washingPeriod": 3,
+        "name": "test",
+        "materials": [
+          {
+            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[0],
+            "percentage": 20
+          },
+          {
+            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[1],
+            "percentage": 55
+          },
+          {
+            "type": Object.keys(numberOfParticlesPerWashByMaterialType)[2],
+            "percentage": 25
+          }
+        ]
+    }
+
+    const materials = clothing["materials"].map(material => {
+      return [material["type"], material["percentage"]]
+    })
+
+    const provider = new PolutionInfoProvider()
+    const particlesPerWash = provider.calculateTotalNumberOfParticlesPerWash(clothing)
+    const gramsPerWash = provider.convertNumberOfParticlesToWeightInGrams(particlesPerWash)
+
+    const particlesPerLifeCircle = provider.calculateTotalNumberOfParticlesPerLifeCircle(clothing)
+    const gramsPerLifeCircle = provider.convertNumberOfParticlesToWeightInGrams(particlesPerLifeCircle)
+
+    console.log("Life cycle: " + particlesPerLifeCircle)
+
     this.state = {
       chartColorSequence: [
         "rgb(74, 181, 235)",
@@ -35,14 +73,12 @@ export default class Result extends React.Component {
         },
         {
           label: "Fabric Composition2",
-            data: [
-            ["Cashmere", 0.8],
-            ["Cotton", 0.1],
-            ["Synthetic Fiber", 0.05],
-            ["Others", 0.05],
-          ],
+            data: materials,
         },
-      ]
+        
+      ],
+      gramsPerWash: gramsPerWash,
+      gramsPerLifeCircle: gramsPerLifeCircle,
     };
   }
 
@@ -50,16 +86,46 @@ export default class Result extends React.Component {
     return this.state.dataset[1]["data"].map((item, index) => {
       return <div className="legend-bar-section" key={`color-legend-key-${index}`}>
         <div className="legend-bar" style={{backgroundColor: this.state["chartColorSequence"][index]}}></div>
-        <div className="legend-bar-percentage">{item[1]*100}%</div>
+        <div className="legend-bar-percentage">{Math.trunc(item[1])}%</div>
         <div className="legend-bar-description">{item[0]}</div>
       </div>
     })
+  }
+
+  getDate() {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth(); //January is 0!
+    var yyyy = today.getFullYear();
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    today = monthNames[mm].substring(0, 3) + ' ' + dd + ', ' + yyyy;
+    return today
   }
 
 
   render() {
     //you can declare var here
     return <div className="resultContainer">
+
+
+
+      <div className="closet-area-container">
+        <div className="date">
+          {this.getDate()}
+        </div>
+        <div className="legend-heading">
+          Garment Type
+        </div>
+        <div className="legend-subheading">
+          Let's analyze what's in your cloth.
+        </div>
+        <img className="closet-item-image" src={pantsIcon}/>
+        <div className="garment-type-description">
+          Pants
+        </div>
+      </div>
 
       <div className="chart-area-container">
         <div className="legend-heading">
@@ -79,7 +145,7 @@ export default class Result extends React.Component {
           {this.renderColorLegend()}
         </div>
       </div>
-      <div className="chart-area-container">
+      <div className="chart-details-container">
         <div className="legend-heading">
           Microplastics Released
         </div>
@@ -94,7 +160,7 @@ export default class Result extends React.Component {
             <div className="legend-description">
               Microplastics/Wash
               <div className="micro-plastics-figure">
-                .09
+                {Math.trunc(this.state.gramsPerWash*100)/100}
                 <span className="micro-plastics-unit">g</span>
               </div>
             </div>
@@ -102,16 +168,29 @@ export default class Result extends React.Component {
           <div className="micro-plastics-cover-right">
             <div className="legend-description">
               Microplastics/Year
-              <div className="micro-plastics-figure">
-                2.02
+              <div className="micro-plastics-figure yearly-figure">
+                {Math.trunc(this.state.gramsPerLifeCircle*100)/100}
                 <span className="micro-plastics-unit">g</span>
               </div>
             </div>
           </div>
         </div>
+        <div className="plastics-release-container">
+          <div className="plastic-release-header">That's...</div>
+          <div className="plastic-release-content">
+            <div className="plastic-release-left">
+              <img className="plastic-release-logo" src={plasticBagIcon}/>
+            </div>
+            <div className="plastic-release-left">
+              <div className="plastic-release-pollution-amount">1/2</div>
+              <div>Plastic Bag</div>
+            </div>
+          </div>
+          <div className="plastic-release-subgroup">Straight Into Ocean</div>
+        </div>
       </div>
+      <img className="ocean-rendering" src={ocean} />
     </div>
   }
-
 }
 
