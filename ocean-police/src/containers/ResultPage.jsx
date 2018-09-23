@@ -1,6 +1,8 @@
 import React from 'react';
 import {Chart, Axis, Series, Tooltip, Cursor, Pie} from "react-charts";
 import badSmileyIcon from "../resources/smileyIcon.JPG"
+import plasticBagIcon from "../resources/plasticBag.JPG"
+import ocean from "../resources/ocean.JPG"
 
 export default class Result extends React.Component {
 
@@ -79,7 +81,7 @@ export default class Result extends React.Component {
           {this.renderColorLegend()}
         </div>
       </div>
-      <div className="chart-area-container">
+      <div className="chart-details-container">
         <div className="legend-heading">
           Microplastics Released
         </div>
@@ -109,9 +111,22 @@ export default class Result extends React.Component {
             </div>
           </div>
         </div>
+        <div className="plastics-release-container">
+          <div className="plastic-release-header">That's...</div>
+          <div className="plastic-release-content">
+            <div className="plastic-release-left">
+              <img className="plastic-release-logo" src={plasticBagIcon}/>
+            </div>
+            <div className="plastic-release-left">
+              <div className="plastic-release-pollution-amount">1/2</div>
+              <div>Plastic Bag</div>
+            </div>
+          </div>
+          <div className="plastic-release-subgroup">Straight Into Ocean</div>
+        </div>
       </div>
+      <img className="ocean-rendering" src={ocean} />
     </div>
   }
-
 }
 
