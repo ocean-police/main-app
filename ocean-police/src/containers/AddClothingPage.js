@@ -200,7 +200,7 @@ class AddClothingPage extends Component {
         <CircularProgress  variant="indeterminate" />
       </div>
     } else {
-      return <CircularProgress variant="determinate" style={{visibility: 'hidden'}} />
+      return <div />
     }
   }
 
@@ -208,7 +208,7 @@ class AddClothingPage extends Component {
     if (this.state.imagePreview !== null) {
       return <img src={this.state.imagePreview.src} />
     } else {
-      return <img src="" style={{visibility: 'hidden'}} />
+      return <div />
     }
   }
 
