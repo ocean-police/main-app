@@ -54,7 +54,7 @@ class AddClothingPage extends Component {
 
     this.state = {
       name: '',
-      type: 'Long Sleeve',
+      type: '',
       materials: [
         {
           type: "",
