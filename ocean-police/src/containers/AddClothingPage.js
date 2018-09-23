@@ -10,18 +10,6 @@ const styles = {
   container: {
     margin: "5vw"
   },
-  garmentType: {
-    color: "#435761",
-    textAlign: "left",
-    fontSize: "26px",
-    marginBottom: "4px",
-  },
-  direction: {
-    color: "#435761",
-    textAlign: "left",
-    fontSize: "14px",
-    marginBottom: "2px",
-  },
   searchSection: {
     fontSize: "40px",
     margin: "3px 0px",
@@ -57,12 +45,12 @@ class AddClothingPage extends Component {
       <div className={classes.container}>
         <Grid container className={classes.root}>
           <Grid item xs={12}>
-            <Typography className={classes.garmentType}>
+            <Typography variant="display1">
               Garment Type
             </Typography>
           </Grid>
           <Grid item xs={12} className="direction-type-1 full-width">
-            <Typography className={classes.direction}>
+            <Typography variant="caption">
               Start your entry with garment type
             </Typography>
           </Grid>
