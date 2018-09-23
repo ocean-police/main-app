@@ -21,7 +21,7 @@ const styles = {
   searchSection: {
     fontSize: "40px",
     margin: "3px 0px",
-    border: "1px solid rgba(0,0,0,0.12)"
+    border: "1px solid rgba(0,0,0,0.12)",
   },
   buttonWidth: {
     width: "95%",
