@@ -1,5 +1,5 @@
 const seed = {
-  '001': {
+  '1': {
     name: 'my red Tees',
     type: 'T_SHIRT',
     materials: [
@@ -18,7 +18,7 @@ const seed = {
     ],
     washingPeriod: 1,
   },
-  '002': {
+  '2': {
     name: 'Jacket #1',
     type: 'JACKET',
     materials: [
@@ -31,12 +31,26 @@ const seed = {
   },
 };
 
+let counter = 3;
+
 const clothings = (state = seed, action) => {
     switch(action.type) {
-    default: {
-      return state;
+
+      case 'ADD_GARMENT': {
+        const newState = {
+          ...state,
+        }
+
+        newState[counter++] = action.garment;
+        console.log(newState);
+        return newState;
+      }
+
+
+      default: {
+        return state;
+      }
     }
-  }
 };
 
 export default clothings;

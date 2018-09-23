@@ -6,10 +6,7 @@ import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import * as _ from "lodash";
-import ListItemText from '@material-ui/core/ListItemText';
-
-// import { diff } from 'deep-object-diff';
+import { withRouter } from 'react-router-dom';
 
 const styles = {
   container: {
@@ -58,10 +55,12 @@ class AddClothingPage extends Component {
       ],
       washingPeriod: 1,
     };
+
+    this.goToResultPage = this.goToResultPage.bind(this);
   }
 
   goToResultPage() {
-    window.location.href = 'result';
+    this.props.history.push('/result');
   }
 
   addMaterial() {
@@ -97,8 +96,7 @@ class AddClothingPage extends Component {
     return (
       <div key={`clothing-index=0`} className={`clothing-index-0`}>
         {this.state.materials.map((materialItem, materialsIndex) => {
-          return <div key={`materials-index=${materialsIndex}`}
-                      className={`materials-index-${materialsIndex}`}>
+          return <div key={`materials-index=${materialsIndex}`} className={`materials-index-${materialsIndex}`}>
             <List component="nav">
               <ListItem>
                 <Input
@@ -114,7 +112,6 @@ class AddClothingPage extends Component {
                   className="listitem-input-middle"
                   value={materialItem["percentage"]}
                   onChange={(e) => this.updateClothingMaterialField(materialsIndex, "percentage", e.target.value)}
-                  endAdornment={<InputAdornment position="end">%</InputAdornment>}
                 >
                 </Input>
                 <div
@@ -129,10 +126,10 @@ class AddClothingPage extends Component {
         })}
         <div className="add-material-button-container"
              onClick={() => this.addMaterial()}>
-          <div item xs={5} className="add-material-button-left">
+          <div className="add-material-button-left">
             Add a material
           </div>
-          <div item xs={3} className="add-material-button-right">
+          <div className="add-material-button-right">
             <i className="fas fa-plus"></i>
           </div>
         </div>
@@ -219,13 +216,9 @@ class AddClothingPage extends Component {
             <Input
               id="input-without-icon-adornment"
               fullWidth
-              onClick={(e) => this.setState({name: e.currentTarget.value})}
+              onChange={e => {this.setState({name: e.target.value})}}
               value={this.state.name}
               placeholder="Short Sleeve 1"
-              startAdornment={
-                <InputAdornment position="start">
-                </InputAdornment>
-              }
             />
           </Grid>
 
@@ -283,7 +276,11 @@ class AddClothingPage extends Component {
             <Button
               variant="contained"
               className={classes.buttonWidth}
-              color="primary" onClick={this.goToResultPage}>
+              onClick={() => {
+                this.props.save(this.state);
+                this.goToResultPage();
+              }}
+              color="primary">
               Save
             </Button>
           </Grid>
@@ -304,8 +301,12 @@ class AddClothingPage extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({});
+const mapStateToProps = (state, ownProps) => ({
 
-const mapDispatchToProps = dispatch => ({});
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AddClothingPage));
+const mapDispatchToProps = dispatch => ({
+  save: garment => dispatch({type: 'ADD_GARMENT', garment}),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AddClothingPage)));
