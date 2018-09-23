@@ -64,7 +64,7 @@ const colorsByMaterialType = {
 const numberOfDaysInYear = 365
 
 class PolutionInfoProvider {
-    calculateTotalNumberOfParticlesPerLifeCircle(clothing, lifeCircleInDays = 2 * numberOfDaysInYear) {
+    calculateTotalNumberOfParticlesPerLifeCircle(clothing, lifeCircleInDays = numberOfDaysInYear) {
         const totalNumberOfParticlesPerWash = this.calculateTotalNumberOfParticlesPerWash(clothing)
         const washingPeriod = clothing["washingPeriod"]
         return lifeCircleInDays / washingPeriod * totalNumberOfParticlesPerWash
