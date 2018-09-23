@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, TextField, withStyles, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
+import GarmentOption from '../components/GarmentOption';
 // import { diff } from 'deep-object-diff';
 
 const styles = {
@@ -34,12 +35,38 @@ class AddClothingPage extends Component {
         <Grid container className={classes.root}>
           <Grid item xs={12}>
             <TextField item xs={10}
-                       fullWidth
+              fullWidth
               id="standard"
               label="Search garment"
               className={classes.textField}
               margin="normal"
             />
+          </Grid>
+        </Grid>
+        <Grid container>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
+          </Grid>
+          <Grid item xs={3}>
+            <GarmentOption />
           </Grid>
         </Grid>
         <div>
