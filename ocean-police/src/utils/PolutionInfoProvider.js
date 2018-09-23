@@ -1,6 +1,24 @@
 const clothingWeightByType = {
-    "t-shirt": 200,
-    "jeans": 400
+    "Short Sleeve": 180,
+    "Long Sleeve": 250,
+    "Sweater": 500,
+    "Swim Suit": 700,
+    "Bra": 200,
+    "Skirt": 400,
+    "Pants": 400,
+    "Legging/Tights": 300,
+    "Shorts": 300,
+    "Underwear": 200,
+    "Dress": 800,
+    "Socks": 100,
+    "Scarf": 300,
+    "Gloves": 150,
+    "Hat": 200,
+    "Jacket": 1000,
+    "Swim Bottoms": 350,
+    "Swim Top": 350,
+    "Hoodie": 600,
+    "Windbreaker": 1800
 };
 
 const numberOfParticlesPerWashByMaterialType = {
