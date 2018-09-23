@@ -19,7 +19,8 @@ import { withRouter } from 'react-router-dom';
 
 const styles = {
   container: {
-    margin: "5vw"
+    margin: "5vw",
+    paddingTop: '60px',
   },
   smallCaption: {
     textAlign: "center",
@@ -318,7 +319,11 @@ class AddClothingPage extends Component {
               <input id="myInput" style={{visibility: 'hidden'}} type="file" accept="image/*" onChange={e => this.onImageSelected(e) }/>
               <ActionButton type="Camera" />
             </label>
-            {this.imageRecognitionIndicator()}
+          </Grid>
+
+          <Grid item xs={2} />
+          <Grid item xs={10}>
+          ` {this.imageRecognitionIndicator()}
             {this.imagePreview()}
           </Grid>
 

@@ -12,7 +12,8 @@ import Hello from '@material-ui/icons/Menu';
 
 const styles = {
   container: {
-    margin: "5vw"
+    margin: "5vw",
+    paddingTop: '60px',
   },
   appbar: {
     backgroundColor: '#7A98E7',
