@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
 import { Button, Typography, TextField, withStyles, Grid, InputAdornment, FormControl, InputLabel, Input } from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 // import { diff } from 'deep-object-diff';
 
@@ -18,6 +21,9 @@ const styles = {
     width: "95%",
     margin: "0 2.5%",
     backgroundColor: "#7A98E7"
+  },
+  listItemInputWidth: {
+    marginRight: "10px"
   }
 };
 
@@ -32,8 +38,8 @@ class AddClothingPage extends Component {
           type: 'T_SHIRT',
           materials: [
             {
-              material: "",
-              percentage: 0,
+              material: "Plastic Cloth",
+              percentage: 20,
             }
           ],
           washingPeriod: 1,
@@ -50,7 +56,32 @@ class AddClothingPage extends Component {
   renderGarmentList() {
     return this.state.updatedAttributes.map((item) => {
        return <div>
-        {item.type}
+        {/*{item.name}*/}
+         {item["materials"].map((materialItem) => {
+           return <div>
+             <List component="nav" >
+               <ListItem>
+                     <Input
+                       id="input-standard"
+                       placeholder="Material"
+                       className="listitem-input-left"
+                       defaultValue={materialItem["material"]}
+                     />
+                     <Input
+                       id="input-standard"
+                       placeholder="Percentage"
+                       className="listitem-input-middle"
+                       defaultValue={materialItem["percentage"]}
+                     >
+                     </Input>
+                      <div className="listitem-input-right">
+                        <i className="fas fa-times"></i>
+                      </div>
+
+               </ListItem>
+             </List>
+           </div>
+         })}
       </div>
     })
   }
