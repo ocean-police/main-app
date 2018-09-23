@@ -190,7 +190,7 @@ export default class Result extends React.Component {
             </div>
             <div className="plastic-release-left">
               <div className="plastic-release-pollution-amount">{this.formatWeightInGrams(this.state.numberOfPlasticBags)}</div>
-              <div>Plastic Bag</div>
+              <div>Plastic Bags</div>
             </div>
           </div>
           <div className="plastic-release-subgroup">Straight Into Ocean</div>
