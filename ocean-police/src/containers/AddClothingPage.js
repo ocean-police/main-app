@@ -262,20 +262,19 @@ class AddClothingPage extends Component {
 
           <Grid item xs={12}>
             <Select
-              value="every 1 week"
-              onChange={() => {
-              }}
+              value={`${this.state.washingPeriod}`}
+              onChange={(e) => this.setState({washingPeriod: parseInt(e.target.value)})}
               fullWidth
               className={classes.washingPeriodSelect}
             >
-              <MenuItem value="">
+              <MenuItem value="1">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value="every 1 week">Every 1 Week</MenuItem>
-              <MenuItem value="every 2 weeks">Every 2 Weeks</MenuItem>
-              <MenuItem value="every 3 weeks">Every 3 Weeks</MenuItem>
-              <MenuItem value="a month">A Month</MenuItem>
-              <MenuItem value="customs">Custom</MenuItem>
+              <MenuItem value="1">Every 1 Week</MenuItem>
+              <MenuItem value="2">Every 2 Weeks</MenuItem>
+              <MenuItem value="3">Every 3 Weeks</MenuItem>
+              <MenuItem value="4">A Month</MenuItem>
+              <MenuItem value="5">Custom</MenuItem>
             </Select>
           </Grid>
           
