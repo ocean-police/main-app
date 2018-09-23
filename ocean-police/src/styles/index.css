@@ -5,15 +5,41 @@ body {
 }
 
 .listitem-input-left {
-  margin-right: 4px;
-  width: 60%;
+  margin-right: 2.5%;
+  width: 68%;
 }
 
 .listitem-input-middle {
   margin-right: 4px;
-  width: 25%;
+  width: 15%;
 }
 
 .listitem-input-right {
   width: 10%;
+  margin-left: 2.5%;
+}
+
+.add-material-button-container {
+  width: 100%;
+  overflow-y: auto;
+  margin: 20px 0;
+}
+
+.add-material-button-left {
+  margin-left: 57%;
+  float: left;
+}
+
+.add-material-button-right {
+  margin-left: 20px;
+  float: left;
+}
+
+.submit-buttons {
+  width: 100%;
+  overflow-y: auto;
+}
+
+li {
+  padding: 8px !important;
 }
