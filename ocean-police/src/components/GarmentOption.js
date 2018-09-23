@@ -18,7 +18,7 @@ const styles = {
   icon: {
     transform: 'translate(162%,-50%)',
     top: '50%',
-    right: '50%',
+    left: '-277%',
     position: 'relative',
     fill: 'white',
   },
@@ -44,7 +44,7 @@ class AddClothingPage extends Component {
         <div className={[classes.garmentCircle, (this.props.active ? classes.iconActiveColor : null)].join(' ')}>
           <img className={classes.icon} src={ icons[this.props.type] } alt="logo" />
         </div>
-        <Typography variant="caption" className={classes.caption}> {this.props.name} </Typography>
+        <Typography variant="caption" align="center" className={classes.caption}> {this.props.name} </Typography>
       </React.Fragment>
     );
   }
