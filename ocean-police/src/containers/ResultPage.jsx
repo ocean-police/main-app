@@ -2,6 +2,9 @@ import React from 'react';
 import {Chart, Axis, Series, Tooltip, Cursor, Pie} from "react-charts";
 import badSmileyIcon from "../resources/smileyIcon.JPG"
 import plasticBagIcon from "../resources/plasticBag.JPG"
+import goodIcon from "../resources/good.png";
+import badIcon from "../resources/bad.png";
+import mehIcon from "../resources/meh.png";
 import ocean from "../resources/ocean.JPG";
 import GarmentOption from '../components/GarmentOption';
 import pantsIcon from "../resources/pants.JPG";
@@ -147,7 +150,7 @@ class Result extends React.Component {
             <Axis type="pie"/>
             <Series type={Pie} showPoints={true}/>
           </Chart>
-          <img className="chart-icon" src={badSmileyIcon} />
+          <img className="chart-icon" src={badIcon} />
         </div>
         <div className="chart-area-right">
           {this.renderColorLegend()}
@@ -191,7 +194,7 @@ class Result extends React.Component {
             </div>
             <div className="plastic-release-left">
               <div className="plastic-release-pollution-amount">{this.formatWeightInGrams(this.state.numberOfPlasticBags)}</div>
-              <div>Plastic Bag</div>
+              <div>Plastic Bags</div>
             </div>
           </div>
           <div className="plastic-release-subgroup">Straight Into Ocean</div>

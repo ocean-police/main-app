@@ -66,9 +66,9 @@
 
 .chart-icon {
     position: absolute;
-    top: 52px;
-    left: 63px;
-    width: 80px;
+    width: 30%;
+    top: 35%;
+    left: 35%;
 }
 
 .legend-description {
