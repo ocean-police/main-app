@@ -8,10 +8,11 @@ import mehIcon from "../resources/meh.png";
 import ocean from "../resources/ocean.JPG";
 import GarmentOption from '../components/GarmentOption';
 import pantsIcon from "../resources/pants.JPG";
+import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core';
 import { numberOfParticlesPerWashByMaterialType, clothingWeightByType, PolutionInfoProvider } from "../utils/PolutionInfoProvider"
 import { withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
-
+import Hello from '@material-ui/icons/Menu';
 
 class Result extends React.Component {
 
@@ -122,7 +123,16 @@ class Result extends React.Component {
   render() {
     //you can declare var here
     return <div className="resultContainer">
-
+        <AppBar position="static" style={{backgroundColor: '#7A98E7'}}>
+          <Toolbar>
+            <IconButton color="inherit" aria-label="Menu">
+              <Hello />
+            </IconButton>
+            <Typography variant="title" color="inherit">
+              Item
+            </Typography>
+          </Toolbar>
+        </AppBar>
 
 
       <div className="closet-area-container">
