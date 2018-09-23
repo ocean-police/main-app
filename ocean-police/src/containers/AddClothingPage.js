@@ -162,7 +162,7 @@ class AddClothingPage extends Component {
     const {classes} = this.props;
     return (
       <div className={classes.container}>
-        <Grid container className={classes.root} alignItems="center" spacing={16}>
+        <Grid container className={classes.root} alignItems="center" spacing={24}>
           <Grid item xs={12} className="direction-type-1 full-width">
             <Typography variant="display1">
               Garment Type
