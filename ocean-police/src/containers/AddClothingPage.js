@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import GarmentOption from '../components/GarmentOption';
-import { Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem } from '@material-ui/core';
+import {Button, Typography, withStyles, Grid, InputAdornment, Input, MenuItem} from '@material-ui/core';
 import Search from '@material-ui/icons/Search';
 import Select from '@material-ui/core/Select';
 import List from '@material-ui/core/List';
@@ -39,7 +39,7 @@ const styles = {
     border: "1px solid grey",
     ":hover": {
       border: "1px solid grey"
-    } 
+    }
   }
 };
 
@@ -48,23 +48,15 @@ class AddClothingPage extends Component {
     super(props);
 
     this.state = {
-      updatedAttributes: [
+      name: '',
+      type: null,
+      materials: [
         {
-          name: 'The only T-shirt',
-          type: 'T_SHIRT',
-          materials: [
-            {
-              material: "Plastic Cloth",
-              percentage: 20,
-            },
-            {
-              material: "Synthetic Polyester",
-              percentage: 80,
-            },
-          ],
-          washingPeriod: 1,
+          material: "",
+          percentage: 0,
         },
-      ]
+      ],
+      washingPeriod: 1,
     };
   }
 
@@ -72,80 +64,91 @@ class AddClothingPage extends Component {
     window.location.href = 'result';
   }
 
-  addMaterial(clothingIndex) {
-    var newState = this.state.updatedAttributes;
-    newState[clothingIndex]["materials"].push(
+  addMaterial() {
+    var newMaterials = [...this.state.materials];
+    newMaterials.push(
       {
         material: "",
         percentage: 0,
       },
     )
     this.setState({
-      updatedAttributes: newState
+      materials: newMaterials,
     });
   }
 
-  removeMaterial(clothingIndex, materialsIndex) {
-    var newState = this.state.updatedAttributes
-    _(newState[clothingIndex]["materials"])
-      .splice(materialsIndex, 1)
-      .value();
+  removeMaterial(materialsIndex) {
+    var newMaterials = [...this.state.materials];
+    newMaterials.splice(materialsIndex, 1);
     this.setState({
-      updatedAttributes: newState
+      materials: newMaterials,
+    });
+  }
+
+  updateClothingMaterialField(materialsIndex, stateValueToUpdate, value) {
+    var newMaterials = this.state.materials;
+    newMaterials[materialsIndex][stateValueToUpdate] = value;
+    this.setState({
+      materials: newMaterials,
     });
   }
 
   renderGarmentList() {
-    return this.state.updatedAttributes.map((item, clothingIndex) => {
-       return <div key={`clothing-index=${clothingIndex}`} className={`clothing-index-${clothingIndex}`}>
-        {/*{item.name}*/}
-         {item["materials"].map((materialItem, materialsIndex) => {
-           return <div key={`materials-index=${materialsIndex}`}
-             className={`materials-index-${materialsIndex}`}>
-             <List component="nav">
-               <ListItem>
-                 <Input
-                   id="input-standard"
-                   placeholder="Material"
-                   className="listitem-input-left"
-                   defaultValue={materialItem["material"]}
-                 />
-                 <Input
-                   id="adornment-percentage"
-                   placeholder="Percentage"
-                   className="listitem-input-middle"
-                   defaultValue={materialItem["percentage"]}
-                   endAdornment={<InputAdornment position="end">%</InputAdornment>}
-                 >
-                 </Input>
-                 <div
-                   className="listitem-input-right"
-                   onClick={() => this.removeMaterial(clothingIndex, materialsIndex)}
-                 >
-                   <i className="fas fa-times"></i>
-                 </div>
-               </ListItem>
-             </List>
-           </div>
-         })}
-         <div className="add-material-button-container"
-           onClick={() => this.addMaterial(clothingIndex)}>
-           <div item xs={5} className="add-material-button-left">
-             Add a material
-           </div>
-           <div item xs={3} className="add-material-button-right">
-             <i className="fas fa-plus"></i>
-           </div>
-         </div>
+    return (
+      <div key={`clothing-index=0`} className={`clothing-index-0`}>
+        {this.state.materials.map((materialItem, materialsIndex) => {
+          return <div key={`materials-index=${materialsIndex}`}
+                      className={`materials-index-${materialsIndex}`}>
+            <List component="nav">
+              <ListItem>
+                <Input
+                  id="input-standard"
+                  placeholder="Material"
+                  className="listitem-input-left"
+                  value={materialItem["material"]}
+                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "material", e.target.value)}
+                />
+                <Input
+                  id="adornment-percentage"
+                  placeholder="Percentage"
+                  className="listitem-input-middle"
+                  value={materialItem["percentage"]}
+                  onChange={(e) => this.updateClothingMaterialField(materialsIndex, "percentage", e.target.value)}
+                  endAdornment={<InputAdornment position="end">%</InputAdornment>}
+                >
+                </Input>
+                <div
+                  className="listitem-input-right"
+                  onClick={() => this.removeMaterial(materialsIndex)}
+                >
+                  <i className="fas fa-times"></i>
+                </div>
+              </ListItem>
+            </List>
+          </div>
+        })}
+        <div className="add-material-button-container"
+             onClick={() => this.addMaterial()}>
+          <div item xs={5} className="add-material-button-left">
+            Add a material
+          </div>
+          <div item xs={3} className="add-material-button-right">
+            <i className="fas fa-plus"></i>
+          </div>
+        </div>
       </div>
-    })
+    );
+  }
+
+  test(){
+    return "test";
   }
 
   render() {
-    const { classes } = this.props;
+    const {classes} = this.props;
     return (
       <div className={classes.container}>
-        <Grid container className={classes.root} alignItems="center" spacing={16}>
+        <Grid container className={classes.root} alignItems="center" spacing={24}>
           <Grid item xs={12} className="direction-type-1 full-width">
             <Typography variant="display1">
               Garment Type
@@ -161,7 +164,7 @@ class AddClothingPage extends Component {
               placeholder="Search garment"
               startAdornment={
                 <InputAdornment position="start">
-                  <Search />
+                  <Search/>
                 </InputAdornment>
               }
             />
@@ -169,57 +172,62 @@ class AddClothingPage extends Component {
 
           <Grid container alignContent="center">
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
             <Grid item xs={3}>
-              <GarmentOption />
+              <GarmentOption/>
             </Grid>
           </Grid>
 
 
-        <Grid item xs={4} />
+          <Grid item xs={4}/>
 
-        <Grid item xs={5}>
-          <Button variant="outlined" size="small" color="default" className={classes.button}>
-          See More
-          </Button>
-        </Grid>
+          <Grid item xs={5}>
+            <Button variant="outlined" size="small" color="default" className={classes.button}>
+              See More
+            </Button>
+          </Grid>
 
-        <Grid item xs={12}>
-          <Typography variant="display1">
-            Name Your Garment
-          </Typography>
-        </Grid>
+          <Grid item xs={12}>
+            <Typography variant="display1">
+              Name Your Garment
+            </Typography>
+            <Typography variant="caption">
+              To help you find your favourite garment in your Closet
+            </Typography>
+          </Grid>
 
-        <Grid item xs={12} className={classes.searchSection} >
-          <Input
-            id="input-without-icon-adornment"
-            fullWidth
-            placeholder="Short Sleeve 1"
-            startAdornment={
-              <InputAdornment position="start">   
+          <Grid item xs={12} className={classes.searchSection}>
+            <Input
+              id="input-without-icon-adornment"
+              fullWidth
+              onClick={(e) => this.setState({name: e.currentTarget.value})}
+              value={this.state.name}
+              placeholder="Short Sleeve 1"
+              startAdornment={
+                <InputAdornment position="start">
                 </InputAdornment>
-            }
-          />
-        </Grid>
+              }
+            />
+          </Grid>
 
           <Grid item xs={12}>
             <Typography variant="display1">
@@ -230,8 +238,17 @@ class AddClothingPage extends Component {
             </Typography>
           </Grid>
 
+          <Grid item xs={4} />
+          <Grid item xs={8}>
+            <GarmentOption />
+          </Grid>
+
           <Grid item xs={12} className={classes.smallCaption}>
             <Typography variant="caption">Or input the materials manually</Typography>
+          </Grid>
+          
+          <Grid item xs={12}>
+            {this.renderGarmentList()}
           </Grid>
 
           <Grid item xs={12}>
@@ -245,10 +262,11 @@ class AddClothingPage extends Component {
 
           <Grid item xs={12}>
             <Select
-                value="every 1 week"
-                onChange={() => {}}
-                fullWidth
-                className={classes.washingPeriodSelect}
+              value="every 1 week"
+              onChange={() => {
+              }}
+              fullWidth
+              className={classes.washingPeriodSelect}
             >
               <MenuItem value="">
                 <em>None</em>
@@ -260,19 +278,7 @@ class AddClothingPage extends Component {
               <MenuItem value="customs">Custom</MenuItem>
             </Select>
           </Grid>
-
-          <Grid item xs={1} />
-        <Grid item xs={1} />
-
-
-        <Grid item xs={12} className="direction-type-1 full-width">
-          <Typography variant="caption">
-            To help you find your favourite garment in your Closet
-          </Typography>
-        </Grid>
-          <div>
-            {this.renderGarmentList()}
-          </div>
+          
 
           <Grid item xs={5}>
             <Button
@@ -299,10 +305,8 @@ class AddClothingPage extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-});
+const mapStateToProps = (state, ownProps) => ({});
 
-const mapDispatchToProps = dispatch => ({
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(AddClothingPage));
