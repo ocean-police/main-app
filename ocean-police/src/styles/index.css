@@ -3,3 +3,17 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.listitem-input-left {
+  margin-right: 4px;
+  width: 60%;
+}
+
+.listitem-input-middle {
+  margin-right: 4px;
+  width: 25%;
+}
+
+.listitem-input-right {
+  width: 10%;
+}
